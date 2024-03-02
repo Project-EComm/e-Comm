@@ -12,6 +12,20 @@ body {
 }
 
 /* NavBar */
+
+.navbar {
+  background-color: #204969;
+  color: white;
+}
+
+.custom-offcanvas {
+  width: 280px !important;
+}
+
+.profile {
+  margin-left: -12px;
+}
+
 .category {
   width: 20px;
 }
@@ -22,6 +36,48 @@ body {
 
 .nav-item {
   list-style: none;
+}
+
+.closeNav {
+  font-size: larger;
+}
+
+.openNav {
+  font-size: xx-large;
+  color: white;
+  margin-left: 8px;
+}
+
+.headingSideBar {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  list-style: none;
+  background-color: white;
+  padding: 12px;
+}
+
+.NavLinks {
+  list-style: none;
+  background-color: white;
+  margin-top: -10px;
+  padding: 0px;
+}
+
+.headingNavLinks {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 15px 20px;
+}
+
+.listNavLinks {
+  font-size: 16px;
+  padding: 15px 20px;
+}
+
+.logoC {
+  margin-left: -15px;
 }
 
 .pageMenu {
@@ -45,6 +101,7 @@ body {
   display: none;
   position: absolute;
   right: 0;
+  left: 10px;
   background-color: #f9f9f9;
   min-width: 160px;
   border-top: 2px solid #0cc0df;
@@ -65,11 +122,41 @@ body {
   display: block;
 }
 
+.B-navbar {
+  overflow: hidden;
+  background-color: #204969;
+  position: fixed;
+  justify-content: space-between;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+}
+
+.B-navbar .AppBar {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  width: 90px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.B-navbar .AppBar:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.B-navbar .AppBar.active {
+  background-color: #0cc0df;
+  color: white;
+}
+
 /* Brand */
 .brand {
   font-size: 1.6rem;
   line-height: 1.25;
-  margin-right: auto;
 }
 
 /* Switch */
@@ -125,8 +212,8 @@ body {
 .action .menu {
   position: absolute;
   top: 120px;
-  left: -140px;
-  padding: 0px 20px;
+  left: -160px;
+  padding: 0px 5px;
   width: 200px;
   height: fit-content;
   max-height: 400px;
@@ -139,6 +226,27 @@ body {
   opacity: 0;
   overflow-y: auto;
 }
+
+@media screen and (width < 500px) {
+  .action .menu {
+    position: absolute;
+    top: 120px;
+    left: -135px;
+    padding: 0px 5px;
+    width: 160px;
+    height: fit-content;
+    max-height: 400px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid black;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    overflow-y: auto;
+  }
+}
+
 .action .menu {
   scrollbar-width: none;
 }
@@ -517,6 +625,9 @@ div.content {
     text-align: center;
     float: none;
   }
+  .searchBox {
+    width: 250px;
+  }
 }
 
 .main-body {
@@ -635,6 +746,12 @@ div.content {
   flex: 1;
 }
 
+@media screen and (width < 400px) {
+  .services {
+    display: none;
+  }
+}
+
 @media screen and (width > 768px) {
   .headHome {
     width: 100%;
@@ -664,8 +781,14 @@ div.content {
   text-transform: uppercase;
 }
 
+@media screen and (width <= 520px) {
+  .sectionheading {
+    font-size: 17px;
+  }
+}
+
 .hr-heading {
-  width: 50px;
+  width: 90px;
   border-width: 3px;
   margin-top: -2px;
 }
@@ -680,22 +803,49 @@ div.content {
   color: #204969;
 }
 
+.categoriesFeature {
+  margin-top: -3px;
+}
+
+.categoriesSelect {
+  width: 90px;
+  padding: 5px;
+  height: 40px;
+  background-color: #204969;
+  color: white;
+  border: 1px solid #204969;
+  border-radius: 8px;
+}
+
+.featurUl {
+  display: flex;
+  list-style: none;
+}
+
+.featurLi {
+  margin-right: 12px;
+}
+
+.featurLi:hover {
+  color: #204969;
+  font-weight: 500;
+}
+
+.featurLi:active {
+  color: #204969;
+  font-weight: 500;
+}
+
 /* product card */
 .grid-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-left: 60px;
-}
-.grid-item {
-  padding: 20px;
-  text-align: center;
+  justify-content: start;
 }
 .item {
-  min-width: 200px;
+  min-width: 300px;
   height: 350px;
   flex: 1;
-  background-color: transparent;
   display: -webkit-flex;
   align-items: flex-end;
   -webkit-align-items: flex-end;
@@ -706,11 +856,20 @@ div.content {
   cursor: pointer;
 }
 .card {
+  width: 300px;
   margin-right: 1px;
+  box-sizing: border-box;
 }
 
-.card:hover .item {
-  background-color: #204969;
+.card:hover .item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #204969da; /* Adjust the color and opacity as needed */
+  z-index: 1;
 }
 
 .item:after {
@@ -759,6 +918,7 @@ div.content {
   text-align: center;
   width: max-content;
   color: white;
+  background-color: #204969;
   padding: 4px;
 }
 
@@ -781,8 +941,6 @@ div.content {
   justify-content: space-evenly;
   align-items: center;
 }
-
-/***** responsive css Start ******/
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .item-desc {

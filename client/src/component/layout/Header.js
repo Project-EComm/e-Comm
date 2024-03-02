@@ -1,27 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./apkaBazzar.png";
-import { FaRegMoon } from "react-icons/fa";
-import { IoPerson, IoSunnyOutline } from "react-icons/io5";
+// import { FaRegMoon } from "react-icons/fa";
 import { useAuth } from "../../context/auth.js";
 import { toast, Zoom } from "react-toastify";
 import { CgProfile } from "react-icons/cg";
 import { FiEdit } from "react-icons/fi";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
 import { TfiHelpAlt } from "react-icons/tfi";
 import { FaSignInAlt } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
-import { BiSolidOffer } from "react-icons/bi";
-import { MdCurrencyExchange } from "react-icons/md";
+// import { BiSolidOffer } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
-import { IoIosClose } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { IoIosMenu } from "react-icons/io";
+import { IoIosHome } from "react-icons/io";
+import { BiCategory } from "react-icons/bi";
+import { CiHeart } from "react-icons/ci";
+import { IoMdTrendingUp } from "react-icons/io";
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header(props) {
   const [auth, setauth] = useAuth();
 
   const [isMenuActive, setMenuActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [ip, setIp] = useState();
+  const [cityip, setcityip] = useState();
+  const [country, setcountry] = useState();
+
+  const getIp = async () => {
+    // Connect ipapi.co with fetch()
+    const response = await fetch("https://ipapi.co/json/");
+    const data = await response.json();
+    // Set the IP address to the constant `ip`
+    setIp(data.ip);
+    setcityip(data.city);
+    setcountry(data.country_name);
+  };
+
+  // Run `getIP` function above just once when the page is rendered
+  useEffect(() => {
+    getIp();
+  }, []);
 
   const name = auth.user
     ? `${auth.user.first_name} ${auth.user.last_name}`
@@ -52,518 +75,497 @@ function Header(props) {
 
   return (
     <>
-      {/*Main Navigation*/}
-      <header>
-        {/* Jumbotron */}
-        <div
-          className="p-1 text-center"
-          style={{
-            color: props.mode === "light" ? "#204969" : "#0B1423",
-            backgroundColor: props.mode === "light" ? "#D3D3D3" : "#0B1423",
-            borderBottom: `1px solid ${
-              props.mode === "light" ? "#204969" : "white"
-            }`,
-          }}
+      <div className="navbar ps-1 pe-1">
+        <NavLink
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasScrolling"
+          aria-controls="offcanvasScrolling"
         >
-          <div className="container">
-            <div className="row">
-              <div className="d-flex justify-content-center d-none justify-content-md-start mb-md-0 col d-md-flex">
-                <NavLink to="#!" className="ms-md-2 top-header">
-                  <BiSolidOffer /> Get special offers from big brands now!
-                </NavLink>
-              </div>
-              <div className="d-flex justify-content-center justify-content-md-end mb-md-0 col">
-                <div className="dropdown">
-                  <NavLink
-                    className="dropbtn"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#204969",
-                      fontSize: "12px",
-                    }}
-                  >
-                    <MdCurrencyExchange /> Currency
-                  </NavLink>
-                  <div className="dropdown-content">
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 1
-                    </NavLink>
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 2
-                    </NavLink>
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 3
-                    </NavLink>
-                  </div>
-                </div>
-                <div className="dropdown ms-3">
-                  <NavLink
-                    className="dropbtn"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#204969",
-                      fontSize: "12px",
-                    }}
-                  >
-                    <MdLanguage /> Language
-                  </NavLink>
-                  <div className="dropdown-content">
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 1
-                    </NavLink>
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 2
-                    </NavLink>
-                    <NavLink
-                      to="#!"
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                        borderBottom: `1px solid ${
-                          props.mode === "light" ? "#204969" : "white"
-                        }`,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Link 3
-                    </NavLink>
-                  </div>
-                </div>
-                <button
-                  className="switch"
-                  id="switch"
-                  onClick={props.toggleMode}
-                  style={{
-                    backgroundColor:
-                      props.mode === "light" ? "#D3D3D3" : "#0B1423",
-                  }}
-                >
-                  {props.mode === "light" ? (
-                    <IoSunnyOutline
-                      className={`switch-light`}
-                      style={{
-                        width: "30px",
-                        height: "30px",
-                        color: "#D14009",
-                      }}
-                    />
-                  ) : (
-                    <FaRegMoon
-                      className={`switch-dark`}
-                      style={{
-                        color: "#dcdcdc",
-                        width: "20px",
-                        height: "20px",
-                      }}
-                    />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Jumbotron */}
-        {/* Jumbotron */}
+          <IoIosMenu className="openNav" />
+        </NavLink>
+
         <div
-          className="p-3 text-center"
-          style={{
-            color: props.mode === "dark" ? "white" : "#204969",
-            backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
-            borderBottom: `1px solid ${
-              props.mode === "light" ? "#0B1423" : "white"
-            }`,
-          }}
+          className="offcanvas offcanvas-start custom-offcanvas"
+          data-bs-scroll="true"
+          data-bs-backdrop="false"
+          tabIndex="-1"
+          id="offcanvasScrolling"
+          aria-labelledby="offcanvasScrollingLabel"
         >
-          <div className="container">
-            <div className="row">
-              {/* Left elements */}
-              <div className="d-flex justify-content-center justify-content-md-start  mb-md-0 col">
+          <div
+            className="offcanvas-header"
+            style={{
+              backgroundColor: "#204969",
+            }}
+          >
+            <i
+              className="fas fa-angle-left closeNav"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></i>
+
+            <h5
+              className="offcanvas-title ms-auto"
+              id="offcanvasScrollingLabel"
+            >
+              {" "}
+              <div className="logoC">
                 <NavLink
-                  className={`navbar-brand brand`}
+                  className="navbar-brand brand"
                   to="/"
                   style={{
-                    color: props.mode === "dark" ? "white" : "#204969",
+                    color: "white",
+                    fontSize: "15px",
                   }}
                 >
-                  <img src={logo} alt="logo" style={{ width: "40px" }} />{" "}
+                  <img src={logo} alt="logo" style={{ width: "25px" }} />{" "}
                   apkaBazzar
                 </NavLink>
               </div>
-              {/* Left elements */}
-              {/* Center elements */}
-              <div className="d-flex input-group w-auto my-auto mb-md-0 justify-content-center col">
-                <ul className="navbar-nav flex-row">
-                  <li className="nav-item me-lg-0 d-md-inline-block">
-                    <NavLink className="nav-link" to="/">
-                      Home
-                    </NavLink>
-                  </li>
-                  <li className="nav-item  me-lg-0 d-md-inline-block ms-2">
-                    <NavLink className="nav-link" to="#!">
-                      About
-                    </NavLink>
-                  </li>
-                  <li className="nav-item  me-lg-0 d-md-inline-block ms-2">
-                    <NavLink className="nav-link" to="#!">
-                      Contact
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-              {/* Center elements */}
-              {/* Right elements */}
-              <div className="d-flex justify-content-center justify-content-md-end align-items-center col">
-                <div className="d-flex">
-                  {/* Cart */}
-                  <NavLink className="text-reset me-3" to="#!">
-                    <span>
-                      <i className="fas fa-shopping-cart" />
-                    </span>
-                    <span className="badge rounded-pill badge-notification bg-danger">
-                      1
-                    </span>
-                  </NavLink>
-                  <NavLink className="text-reset me-3" to="#!">
-                    <span>
-                      <i className="fas fa-heart" />
-                    </span>
-                    <span className="badge rounded-pill badge-notification bg-danger">
-                      1
-                    </span>
-                  </NavLink>
-                </div>
-              </div>
-              {/* Right elements */}
+            </h5>
+          </div>
+          <div
+            className="offcanvas-body"
+            style={{
+              backgroundColor: "#d5e3ed",
+              padding: "0px",
+              color: "black",
+            }}
+          >
+            <ul className="headingSideBar">
+              <NavLink
+                to="/"
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  display: "flex",
+                }}
+              >
+                <li className="me-auto">ApkaBazzar Home</li>
+                <li>
+                  <IoHomeOutline />
+                </li>
+              </NavLink>
+            </ul>
+            <ul className="NavLinks">
+              <li className="headingNavLinks">
+                <IoMdTrendingUp /> Trending
+              </li>
+              <li className="listNavLinks">Best Sellers</li>
+              <li className="listNavLinks">New Releases</li>
+              <li className="listNavLinks">Large Discount</li>
+            </ul>
+            <ul className="NavLinks">
+              <li className="headingNavLinks">Top Categories for You</li>
+              <li className="listNavLinks">Women's Fashion</li>
+              <li className="listNavLinks">Mobile and Accessories</li>
+              <li className="listNavLinks">Beauty</li>
+              <li className="listNavLinks">Home and Kitchen</li>
+              <li className="listNavLinks">Sell All Categories</li>
+            </ul>
+            <ul className="NavLinks">
+              <li className="headingNavLinks">Offers & History</li>
+              <li className="listNavLinks">Money Spent</li>
+              <li className="listNavLinks">Offer Store</li>
+              <li className="listNavLinks">Coupon Store</li>
+            </ul>
+            <ul className="NavLinks">
+              <li className="headingNavLinks">Help & Support</li>
+              <li className="listNavLinks">
+                {" "}
+                <NavLink className="text-dark">Privacy Policy</NavLink>
+              </li>
+              <li className="listNavLinks">
+                <NavLink className="text-dark">Refund Policy</NavLink>
+              </li>
+              <li className="listNavLinks">
+                <NavLink className="text-dark">Caution Notice</NavLink>
+              </li>
+            </ul>
+            <div className="sideNavFooter ps-4 pb-3">
+              © 2024 Copyright: apkaBazzar
             </div>
           </div>
         </div>
-        {/* Navbar */}
-        <nav
-          className="navbar navbar-expand-lg"
-          style={{
-            color: props.mode === "dark" ? "white" : "#204969",
-            backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
-            borderBottom: `1px solid ${
-              props.mode === "light" ? "#0B1423" : "white"
-            }`,
-          }}
-        >
-          <div className="container pageNav ps-5 pe-5">
-            <div className="Categories">
-              <NavLink
-                className="nav-link btn shadow-0"
-                role="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasLeft"
-                aria-controls="offcanvasLeft"
-              >
-                <i className="fas fa-bars me-1" />
-                <span>Categories</span>
-              </NavLink>
-              <div
-                className="offcanvas offcanvas-start sidebar"
-                tabIndex={-1}
-                id="offcanvasLeft"
-                aria-labelledby="offcanvasLeftLabel"
-              >
-                <div
-                  className="offcanvas-header"
-                  style={{
-                    color: props.mode === "dark" ? "white" : "#204969",
-                    backgroundColor:
-                      props.mode === "light" ? "#d5e3ed" : "#0B1423",
-                    borderBottom: `1px solid ${
-                      props.mode === "light" ? "#0B1423" : "white"
-                    }`,
-                  }}
-                >
-                  <h5 id="offcanvasLeftLabel">Offcanvas Left</h5>
-                  <button
-                    type="button"
-                    data-bs-dismiss="offcanvas"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#204969",
-                      backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
-                      border: "none",
-                    }}
-                  >
-                    <IoIosClose />
-                  </button>
+        <div className="logoC">
+          <NavLink
+            className="navbar-brand brand"
+            to="/"
+            style={{
+              color: "white",
+            }}
+          >
+            <img src={logo} alt="logo" style={{ width: "40px" }} /> apkaBazzar
+          </NavLink>
+        </div>
+        <div className="d-flex hoverbg">
+          <FaLocationDot
+            style={{
+              marginTop: "15px",
+              fontSize: "18px",
+              marginRight: "5px",
+            }}
+          />
+          <div>
+            <div
+              style={{
+                color: "#B5C0D0",
+                fontSize: "12px",
+              }}
+            >
+              {auth ? `Deliver to ${name}` : ""}
+            </div>
+            <div
+              style={{
+                color: "white",
+                fontSize: "14px",
+                fontWeight: "bolder",
+              }}
+            >
+              {ip ? (
+                <>
+                  {cityip}, {country}
+                </>
+              ) : null}
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 searchBox d-none d-md-block">
+          <form
+            className="d-flex input-group border"
+            style={{
+              color: props.mode === "dark" ? "white" : "#204969",
+              backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
+            }}
+          >
+            <input
+              autoComplete="off"
+              type="search"
+              className="form-control rounded"
+              placeholder="Search"
+              style={{
+                color: props.mode === "dark" ? "white" : "#204969",
+                backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                border: "none",
+              }}
+            />
+            <span
+              className="input-group-text border-0 d-lg-flex"
+              style={{
+                backgroundColor: "#0cc0df",
+                border: "1px solid white",
+                borderRadius: "0px",
+              }}
+            >
+              <i className="fas fa-search text-light" />
+            </span>
+          </form>
+        </div>
+        <div className="dropdown ms-3 d-none d-lg-flex">
+          <NavLink
+            className="dropbtn"
+            style={{
+              color: "white",
+            }}
+          >
+            <MdLanguage /> Language <IoMdArrowDropdown />
+          </NavLink>
+          <div className="dropdown-content mt-5">
+            <NavLink to="#!">Link 1</NavLink>
+            <NavLink to="#!">Link 2</NavLink>
+            <NavLink to="#!">Link 3</NavLink>
+          </div>
+        </div>
+        <div className="justify-content-center profile">
+          {auth.user ? (
+            <>
+              <div className="action">
+                <div className="profile" onClick={menuToggle}>
+                  <img
+                    src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                    alt="Profile Avatar"
+                  />{" "}
                 </div>
                 <div
-                  className="offcanvas-body"
+                  className={`menu ${isMenuActive ? "active" : ""}`}
                   style={{
                     color: props.mode === "dark" ? "white" : "#204969",
                     backgroundColor:
                       props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                    borderColor: props.mode === "light" ? "#0B1423" : "white",
                   }}
-                />
-              </div>
-            </div>
-            <div className="col-md-4 d-none d-sm-flex">
-              <form className="d-flex input-group w-100 my-auto mb-md-0">
-                <input
-                  autoComplete="off"
-                  type="search"
-                  className="form-control rounded"
-                  placeholder="Search"
-                  style={{
-                    color: props.mode === "dark" ? "white" : "#204969",
-                    backgroundColor:
-                      props.mode === "light" ? "#d5e3ed" : "#0B1423",
-                  }}
-                />
-                <span className="input-group-text border-0 d-lg-flex">
-                  <i
-                    className="fas fa-search"
+                >
+                  <h3
                     style={{
-                      color: props.mode === "dark" ? "white" : "#204969",
-                    }}
-                  />
-                </span>
-              </form>
-            </div>
-            <div className="justify-content-center">
-              {!auth.user ? (
-                <>
-                  <div
-                    className="dropdown"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#204969",
-                      borderBottom: `1px solid ${
-                        props.mode === "light" ? "#0B1423" : "white"
-                      }`,
+                      color: props.mode === "dark" ? "white" : "#000000",
                     }}
                   >
-                    <NavLink
-                      className="dropbtn"
+                    {name}
+                    <br />
+                    <div
+                      className="logout"
                       style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
+                        border: "1px solid",
+                        borderColor: isHovered
+                          ? props.mode === "light"
+                            ? "white"
+                            : "#0B1423"
+                          : props.mode === "light"
+                          ? "#0B1423"
+                          : "white",
+                        transition: "border-color 0.3s ease",
+                        cursor: "pointer",
                       }}
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
                     >
-                      <IoPerson /> Login/SignUp
-                    </NavLink>
-                    <div className="dropdown-content">
+                      <NavLink
+                        to="/login"
+                        onClick={handleLogout}
+                        style={{
+                          textDecoration: "none",
+                          color: props.mode === "dark" ? "white" : "#000000",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        <CiLogout /> Logout
+                      </NavLink>
+                    </div>
+                  </h3>
+                  <ul>
+                    <li>
+                      <NavLink
+                        to="/profile"
+                        style={{
+                          color: props.mode === "dark" ? "white" : "#204969",
+                        }}
+                      >
+                        <CgProfile
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                          }}
+                        />{" "}
+                        My profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/updateprofile"
+                        style={{
+                          color: props.mode === "dark" ? "white" : "#204969",
+                        }}
+                      >
+                        <FiEdit
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                          }}
+                        />
+                        Edit profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/!#"
+                        style={{
+                          color: props.mode === "dark" ? "white" : "#204969",
+                        }}
+                      >
+                        <IoSettingsOutline
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                          }}
+                        />{" "}
+                        Setting
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/!#"
+                        style={{
+                          color: props.mode === "dark" ? "white" : "#204969",
+                        }}
+                      >
+                        <TfiHelpAlt
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                          }}
+                        />{" "}
+                        Help
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="action">
+                <div className="profile" onClick={menuToggle}>
+                  <img
+                    src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                    alt="Profile Avatar"
+                  />{" "}
+                </div>
+                <div
+                  className={`menu ${isMenuActive ? "active" : ""}`}
+                  style={{
+                    color: props.mode === "dark" ? "white" : "#204969",
+                    backgroundColor:
+                      props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                    borderColor: props.mode === "light" ? "#0B1423" : "white",
+                  }}
+                >
+                  <ul>
+                    <li>
                       <NavLink
                         to="/login"
                         style={{
                           color: props.mode === "dark" ? "white" : "#204969",
-                          backgroundColor:
-                            props.mode === "light" ? "#d5e3ed" : "#0B1423",
-                          borderBottom: `1px solid ${
-                            props.mode === "light" ? "#0B1423" : "white"
-                          }`,
                         }}
                       >
-                        <CiLogin />
-                        Login
+                        <CiLogin /> Login
                       </NavLink>
+                    </li>
+                    <li>
                       <NavLink
                         to="/register"
                         style={{
                           color: props.mode === "dark" ? "white" : "#204969",
-                          backgroundColor:
-                            props.mode === "light" ? "#d5e3ed" : "#0B1423",
                         }}
                       >
-                        <FaSignInAlt />
-                        SignUp
+                        <FaSignInAlt /> SignIn
                       </NavLink>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="action">
-                    <div className="profile" onClick={menuToggle}>
-                      <img
-                        src={
-                          "https://bootdey.com/img/Content/avatar/avatar7.png"
-                        }
-                        alt="Profile Avatar"
-                      />
-                    </div>
-                    <div
-                      className={`menu ${isMenuActive ? "active" : ""}`}
-                      style={{
-                        color: props.mode === "dark" ? "white" : "#204969",
-                        backgroundColor:
-                          props.mode === "light" ? "#d5e3ed" : "#0B1423",
-                        borderColor:
-                          props.mode === "light" ? "#0B1423" : "white",
-                      }}
-                    >
-                      <h3
-                        style={{
-                          color: props.mode === "dark" ? "white" : "#000000",
-                        }}
-                      >
-                        {name}
-                        <br />
-                        <div
-                          className="logout"
-                          style={{
-                            border: "1px solid",
-                            borderColor: isHovered
-                              ? props.mode === "light"
-                                ? "white"
-                                : "#0B1423"
-                              : props.mode === "light"
-                              ? "#0B1423"
-                              : "white",
-                            transition: "border-color 0.3s ease",
-                            cursor: "pointer",
-                          }}
-                          onMouseEnter={() => setIsHovered(true)}
-                          onMouseLeave={() => setIsHovered(false)}
-                        >
-                          <NavLink
-                            to="/login"
-                            onClick={handleLogout}
-                            style={{
-                              textDecoration: "none",
-                              color:
-                                props.mode === "dark" ? "white" : "#000000",
-                              paddingTop: "10px",
-                            }}
-                          >
-                            <CiLogout /> Logout
-                          </NavLink>
-                        </div>
-                      </h3>
-                      <ul>
-                        <li>
-                          <NavLink
-                            to="/profile"
-                            style={{
-                              color:
-                                props.mode === "dark" ? "white" : "#204969",
-                            }}
-                          >
-                            <CgProfile
-                              style={{
-                                width: "20px",
-                                height: "20px",
-                              }}
-                            />{" "}
-                            My profile
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/updateprofile"
-                            style={{
-                              color:
-                                props.mode === "dark" ? "white" : "#204969",
-                            }}
-                          >
-                            <FiEdit
-                              style={{
-                                width: "20px",
-                                height: "20px",
-                              }}
-                            />
-                            Edit profile
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/!#"
-                            style={{
-                              color:
-                                props.mode === "dark" ? "white" : "#204969",
-                            }}
-                          >
-                            <IoSettingsOutline
-                              style={{
-                                width: "20px",
-                                height: "20px",
-                              }}
-                            />{" "}
-                            Setting
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/!#"
-                            style={{
-                              color:
-                                props.mode === "dark" ? "white" : "#204969",
-                            }}
-                          >
-                            <TfiHelpAlt
-                              style={{
-                                width: "20px",
-                                height: "20px",
-                              }}
-                            />{" "}
-                            Help
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </>
-              )}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+        <div className="d-flex d-none d-md-flex">
+          {/* Cart */}
+          <NavLink className="text-reset me-3" to="#!">
+            <span>
+              <i
+                className="fas fa-shopping-cart"
+                style={{
+                  fontSize: "24px",
+                }}
+              />
+            </span>
+            <span className="badge rounded-pill badge-notification bg-danger">
+              1
+            </span>
+          </NavLink>
+          {/* Fav */}
+          <NavLink className="text-reset me-3" to="#!">
+            <span>
+              <i
+                className="fas fa-heart"
+                style={{
+                  fontSize: "24px",
+                }}
+              />
+            </span>
+            <span className="badge rounded-pill badge-notification bg-danger">
+              1
+            </span>
+          </NavLink>
+        </div>
+      </div>
+      <div
+        className="navbar d-flex d-md-none ps-3 pe-3"
+        style={{ width: "100%" }}
+      >
+        <div className="col-md-4 searchBox " style={{ width: "100%" }}>
+          <form
+            className="input-group border-0"
+            style={{
+              color: props.mode === "dark" ? "white" : "#204969",
+              backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
+              width: "100%",
+            }}
+          >
+            <input
+              autoComplete="off"
+              type="search"
+              className="form-control rounded"
+              placeholder="Search"
+              style={{
+                color: props.mode === "dark" ? "white" : "#204969",
+                backgroundColor: props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                border: "none",
+                width: "100%",
+              }}
+            />
+            <span
+              className="input-group-text border-0 d-lg-flex"
+              style={{
+                backgroundColor: "#0cc0df",
+                borderRadius: "0px",
+              }}
+            >
+              <i className="fas fa-search text-light" />
+            </span>
+          </form>
+        </div>
+      </div>
+
+      <div className="B-navbar d-flex d-md-none">
+        <NavLink to="/" className="AppBar">
+          <div className="justify-content-center">
+            <div className="logo">
+              <IoIosHome
+                style={{
+                  fontSize: "18px",
+                }}
+              />
             </div>
+            <div className="disB">Home</div>
           </div>
-        </nav>
-      </header>
+        </NavLink>
+        <NavLink to="/categories" className="AppBar">
+          <div className="justify-content-center">
+            <div className="logo">
+              <BiCategory
+                style={{
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+            <div className="disB">Categories</div>
+          </div>
+        </NavLink>
+        <NavLink to="/wish" className="AppBar">
+          <div className="justify-content-center">
+            <div className="logo">
+              <CiHeart
+                style={{
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+            <div className="disB">Wish</div>
+          </div>
+        </NavLink>
+        <NavLink to="/cart" className="AppBar">
+          <div className="justify-content-center ">
+            <div className="logo">
+              <FaShoppingCart
+                style={{
+                  fontSize: "18px",
+                }}
+              />
+            </div>
+            <div className="disB">Cart</div>
+          </div>
+        </NavLink>
+      </div>
     </>
   );
 }

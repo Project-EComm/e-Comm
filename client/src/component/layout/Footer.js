@@ -128,7 +128,7 @@ const Footer = (props) => {
             <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
               <h5 className="text-uppercase mb-4">PRODUCT CATEGORIES</h5>
               <ul className="fa-ul" style={{ listStyle: "none" }}>
-                <li className="mb-3">
+                <li className="mb-3 ">
                   <span>
                     <Link
                       to="/"
