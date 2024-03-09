@@ -126,7 +126,7 @@ const Register = (props) => {
           <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <h1
               style={{
-                color: props.mode === "dark" ? "#a1a6a6" : "#000000",
+                color: props.mode === "dark" ? "#a1a6a6" : "#204969",
               }}
             >
               Create an Account
@@ -154,7 +154,7 @@ const Register = (props) => {
           <div className="col-md-7 col-lg-6 ml-auto">
             <h1
               style={{
-                color: props.mode === "dark" ? "#a1a6a6" : "#000000",
+                color: props.mode === "dark" ? "#a1a6a6" : "#204969",
               }}
             >
               SignUp
@@ -163,13 +163,13 @@ const Register = (props) => {
               <div className="row">
                 {/* First Name */}
                 <div className="input-group col-lg-6 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -189,20 +189,20 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />
                 </div>
                 {/* Last Name */}
                 <div className="input-group col-lg-6 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -222,20 +222,20 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />
                 </div>
                 {/* Email Address */}
                 <div className="input-group col-lg-12 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -255,20 +255,20 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />
                 </div>
                 {/* Phone Number */}
                 <div className="input-group col-lg-12 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -286,7 +286,7 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   >
@@ -294,7 +294,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -307,7 +307,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -320,7 +320,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -333,7 +333,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -346,7 +346,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -359,7 +359,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -372,7 +372,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -385,7 +385,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -398,7 +398,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -411,7 +411,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -424,7 +424,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -437,7 +437,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -450,7 +450,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -463,7 +463,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -476,7 +476,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -489,7 +489,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -502,7 +502,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -515,7 +515,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -528,7 +528,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -541,7 +541,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -554,7 +554,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -567,7 +567,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -580,7 +580,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -593,7 +593,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -606,7 +606,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -619,7 +619,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -632,7 +632,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -645,7 +645,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -658,7 +658,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -671,7 +671,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -684,7 +684,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -697,7 +697,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -710,7 +710,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -723,7 +723,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -736,7 +736,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -749,7 +749,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -762,7 +762,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -775,7 +775,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -788,7 +788,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -801,7 +801,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -814,7 +814,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -827,7 +827,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -840,7 +840,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -853,7 +853,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -866,7 +866,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -879,7 +879,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -892,7 +892,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -905,7 +905,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -918,7 +918,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -931,7 +931,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -944,7 +944,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -957,7 +957,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -970,7 +970,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -983,7 +983,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -996,7 +996,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1009,7 +1009,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1022,7 +1022,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1035,7 +1035,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1048,7 +1048,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1061,7 +1061,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1074,7 +1074,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1087,7 +1087,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1100,7 +1100,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1113,7 +1113,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1126,7 +1126,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1139,7 +1139,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1152,7 +1152,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1165,7 +1165,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1178,7 +1178,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1191,7 +1191,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1204,7 +1204,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1217,7 +1217,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1230,7 +1230,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1243,7 +1243,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1256,7 +1256,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1269,7 +1269,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1282,7 +1282,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1295,7 +1295,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1308,7 +1308,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1321,7 +1321,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1334,7 +1334,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1347,7 +1347,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1360,7 +1360,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1373,7 +1373,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1386,7 +1386,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1399,7 +1399,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1412,7 +1412,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1425,7 +1425,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1438,7 +1438,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1451,7 +1451,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1464,7 +1464,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1477,7 +1477,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1490,7 +1490,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1503,7 +1503,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1516,7 +1516,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1529,7 +1529,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1542,7 +1542,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1555,7 +1555,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1568,7 +1568,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1581,7 +1581,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1594,7 +1594,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1607,7 +1607,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1620,7 +1620,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1633,7 +1633,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1646,7 +1646,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1659,7 +1659,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1672,7 +1672,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1685,7 +1685,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1698,7 +1698,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1711,7 +1711,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1724,7 +1724,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1737,7 +1737,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1750,7 +1750,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1763,7 +1763,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1776,7 +1776,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1789,7 +1789,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1802,7 +1802,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1815,7 +1815,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1828,7 +1828,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1841,7 +1841,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1854,7 +1854,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1867,7 +1867,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1880,7 +1880,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1893,7 +1893,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1906,7 +1906,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1919,7 +1919,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1932,7 +1932,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1945,7 +1945,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1958,7 +1958,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1971,7 +1971,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1984,7 +1984,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -1997,7 +1997,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2010,7 +2010,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2023,7 +2023,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2036,7 +2036,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2049,7 +2049,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2062,7 +2062,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2075,7 +2075,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2088,7 +2088,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2101,7 +2101,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2114,7 +2114,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2127,7 +2127,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2140,7 +2140,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2153,7 +2153,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2166,7 +2166,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2179,7 +2179,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2192,7 +2192,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2205,7 +2205,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2218,7 +2218,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2231,7 +2231,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2244,7 +2244,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2257,7 +2257,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2270,7 +2270,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2283,7 +2283,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2296,7 +2296,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2309,7 +2309,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2322,7 +2322,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2335,7 +2335,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2348,7 +2348,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2361,7 +2361,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2374,7 +2374,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2387,7 +2387,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2400,7 +2400,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2413,7 +2413,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2426,7 +2426,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2439,7 +2439,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2452,7 +2452,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2465,7 +2465,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2478,7 +2478,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2491,7 +2491,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2504,7 +2504,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2517,7 +2517,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2530,7 +2530,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2543,7 +2543,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2556,7 +2556,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2569,7 +2569,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2582,7 +2582,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2595,7 +2595,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2608,7 +2608,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2621,7 +2621,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2634,7 +2634,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2647,7 +2647,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2660,7 +2660,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2673,7 +2673,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2686,7 +2686,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2699,7 +2699,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2712,7 +2712,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2725,7 +2725,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2738,7 +2738,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2751,7 +2751,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2764,7 +2764,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2777,7 +2777,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2790,7 +2790,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2803,7 +2803,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2816,7 +2816,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2829,7 +2829,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2842,7 +2842,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2855,7 +2855,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2868,7 +2868,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2881,7 +2881,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2894,7 +2894,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2907,7 +2907,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2920,7 +2920,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2933,7 +2933,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2946,7 +2946,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2959,7 +2959,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2972,7 +2972,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2985,7 +2985,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -2998,7 +2998,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3011,7 +3011,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3024,7 +3024,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3037,7 +3037,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3050,7 +3050,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3063,7 +3063,7 @@ const Register = (props) => {
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                       }}
@@ -3084,20 +3084,20 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />
                 </div>
                 {/* Password */}
                 <div className="input-group col-lg-6 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "white" : "white",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -3117,20 +3117,20 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />
                 </div>
                 {/* Password Confirmation */}
                 <div className="input-group col-lg-6 mb-4">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend inputSpan">
                     <span
-                      className="input-group-text  px-4 border-md icon"
+                      className="input-group-text  px-4 border-md icon inputSpan"
                       style={{
                         color: props.mode === "dark" ? "white" : "#000000",
                         backgroundColor:
-                          props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                          props.mode === "light" ? "white" : "#0B1423",
                         borderColor:
                           props.mode === "light" ? "#000000" : "white",
                         borderRadius: "8px 0px 0px 8px",
@@ -3150,7 +3150,7 @@ const Register = (props) => {
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
                       backgroundColor:
-                        props.mode === "light" ? "#d5e3ed" : "#0B1423",
+                        props.mode === "light" ? "white" : "#0B1423",
                       borderColor: props.mode === "light" ? "#000000" : "white",
                     }}
                   />

@@ -2,11 +2,53 @@ import React from "react";
 import { useAuth } from "../context/auth.js";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast, Zoom } from "react-toastify";
+import { MdVerified } from "react-icons/md";
 
 const MyProfile = (props) => {
   const [auth, setauth] = useAuth();
   const navigate = useNavigate();
   const storedUser = auth ? auth.user : null;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(
+        "http://localhost:8080/api/v1/auth/sendEmailOTP",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+
+        toast.success(data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+
+        // Wait for the toast to be dismissed before navigating
+        navigate("/verifyEmail");
+      } else {
+        console.error("Failed to send OTP");
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+    }
+  };
 
   // Check if storedUser exists before accessing its properties
   const {
@@ -16,6 +58,7 @@ const MyProfile = (props) => {
     countrycode,
     phoneNumber,
     address,
+    verifiedEmail,
     pincode,
     city,
   } = storedUser || {};
@@ -26,6 +69,7 @@ const MyProfile = (props) => {
       user: null,
       tocken: "",
     });
+    localStorage.removeItem("auth");
     navigate("/login");
     toast.success("Logout Successfully", {
       position: "top-right",
@@ -50,14 +94,10 @@ const MyProfile = (props) => {
               <div
                 className="card"
                 style={{
-                  color: props.mode === "dark" ? "white" : "#000000",
-                  backgroundColor: props.mode === "light" ? "white" : "#0B1423",
-                  border: `1px solid ${
-                    props.mode === "light" ? "#0B1423" : "white"
-                  }`,
+                  border: "1px solid black`,",
                 }}
               >
-                <div className="card-body">
+                <div className="card-body card-bodyProfile">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
                       src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
@@ -71,12 +111,7 @@ const MyProfile = (props) => {
                           ? "Not Provided"
                           : first_name + " " + last_name}
                       </h4>
-                      <p
-                        className="font-size-sm"
-                        style={{
-                          color: props.mode === "dark" ? "#a1a6a6" : "#000000",
-                        }}
-                      >
+                      <p className="font-size-sm">
                         {address === "" ? "Not Provided" : address}
                       </p>
                       <button
@@ -99,39 +134,16 @@ const MyProfile = (props) => {
                 <div
                   className="sidebar"
                   style={{
-                    color: props.mode === "dark" ? "white" : "#000000",
-                    backgroundColor:
-                      props.mode === "light" ? "white" : "#0B1423",
-                    border: `1px solid ${
-                      props.mode === "light" ? "#0B1423" : "white"
-                    }`,
+                    border: "1px solid black",
                   }}
                 >
-                  <NavLink
-                    className="active"
-                    to="/profile"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#000000",
-                    }}
-                  >
+                  <NavLink className="active" to="/dashboard/profile">
                     My Account
                   </NavLink>
-                  <NavLink
-                    to="/chnagepassword"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#000000",
-                    }}
-                  >
+                  <NavLink to="/dashboard/updatepassword">
                     Change Password
                   </NavLink>
-                  <NavLink
-                    to="/myorder"
-                    style={{
-                      color: props.mode === "dark" ? "white" : "#000000",
-                    }}
-                  >
-                    My Orders
-                  </NavLink>
+                  <NavLink to="/dashboard/yourorder">My Orders</NavLink>
                 </div>
               </div>
             </div>
@@ -139,14 +151,10 @@ const MyProfile = (props) => {
               <div
                 className="card mb-3"
                 style={{
-                  color: props.mode === "dark" ? "white" : "#000000",
-                  backgroundColor: props.mode === "light" ? "white" : "#0B1423",
-                  border: `1px solid ${
-                    props.mode === "light" ? "#0B1423" : "white"
-                  }`,
+                  border: "1px solid black",
                 }}
               >
-                <div className="card-body">
+                <div className="card-body card-bodyProfile">
                   <p className="card-heading">My Account</p>
                   <div className="row">
                     <div className="col-sm-3">
@@ -170,14 +178,38 @@ const MyProfile = (props) => {
                     <div className="col-sm-3">
                       <h6 className="mb-0">Email</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">{email}</div>
+                    <div className="col-sm-6 text-secondary">{email}</div>
+                    <div className="verifed col-sm-3">
+                      {verifiedEmail === true ? (
+                        <>
+                          <MdVerified
+                            style={{
+                              color: "green",
+                              fontSize: "22px",
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <NavLink onClick={handleSubmit}>
+                            <i
+                              class="fas fa-circle-xmark"
+                              style={{
+                                color: "red",
+                                fontSize: "19px",
+                              }}
+                            ></i>
+                          </NavLink>
+                        </>
+                      )}
+                    </div>
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-3">
                       <h6 className="mb-0">Mobile</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">
+                    <div className="col-sm-6 text-secondary">
                       {countrycode || phoneNumber === ""
                         ? "Not Provided"
                         : countrycode + " " + phoneNumber}
@@ -216,7 +248,7 @@ const MyProfile = (props) => {
                     <div className="col-sm-12">
                       <NavLink
                         className="btn btn-info btn-edit"
-                        to="/updateprofile"
+                        to="/dashboard/updateprofile"
                       >
                         Edit
                       </NavLink>

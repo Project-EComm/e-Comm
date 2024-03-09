@@ -149,7 +149,7 @@ body {
 }
 
 .B-navbar .AppBar.active {
-  background-color: #0cc0df;
+  background-color: #001f38;
   color: white;
 }
 
@@ -309,6 +309,10 @@ body {
 .logout:hover {
   text-align: center;
   background: #ff284d !important;
+}
+
+.formwidth {
+  width: 40% !important;
 }
 
 /* Banners */
@@ -514,14 +518,14 @@ h2 {
 }
 
 .rgisterInput {
-  height: 20px;
+  height: 40px !important;
   border-radius: 0px 8px 8px 0px;
 }
 
-.icon {
-  height: 50.67px;
+.inputSpan {
+  height: 40px !important;
+
   border-radius: 8px 0px 0px 8px;
-  /* border-right: none; */
 }
 
 .btnEnter {
@@ -587,18 +591,20 @@ p > .a:hover {
   padding: 0;
   width: auto;
   border-radius: 0.25rem;
+  background-color: #204969;
+
   overflow: auto;
 }
 
 .sidebar a {
   display: block;
-  color: black;
+  color: white;
   padding: 16px;
   text-decoration: none;
 }
 
 .sidebar a.active {
-  background-color: #0cc0df;
+  background-color: #001f38;
   color: white;
 }
 
@@ -633,22 +639,20 @@ div.content {
 .main-body {
   padding: 15px;
 }
-.card {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
 
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  box-shadow: none !important;
   word-wrap: break-word;
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 
-.card-body {
+.card-bodyProfile {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1rem;
@@ -767,6 +771,7 @@ div.content {
 .priceFooter {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid black;
   justify-content: center;
   align-items: center;
 }
@@ -793,14 +798,22 @@ div.content {
   margin-top: -2px;
 }
 
-.seeAll a {
-  font-size: small;
+.seeAllBtn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  padding: 8px 8px 8px 8px;
+  border: solid #204969 2px;
   text-decoration: none;
-  color: #000;
-  cursor: pointer;
 }
-.seeAll:hover {
-  color: #204969;
+
+.seeAllBtn:hover {
+  background: #204969;
+  text-decoration: none;
+  color: white;
 }
 
 .categoriesFeature {
@@ -831,45 +844,45 @@ div.content {
   font-weight: 500;
 }
 
-.featurLi:active {
-  color: #204969;
-  font-weight: 500;
-}
-
 /* product card */
 .grid-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .item {
   min-width: 300px;
-  height: 350px;
+  height: 300px;
   flex: 1;
   display: -webkit-flex;
   align-items: flex-end;
   -webkit-align-items: flex-end;
   overflow: hidden;
+  border-radius: 8px 8px 0px 0px;
   position: relative;
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   cursor: pointer;
 }
-.card {
+.cardItem {
   width: 300px;
   margin-right: 1px;
   box-sizing: border-box;
 }
 
-.card:hover .item::before {
+.cardItem:hover .item::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #204969da; /* Adjust the color and opacity as needed */
+  background-color: #204969a5; /* Adjust the color and opacity as needed */
   z-index: 1;
+}
+
+.cardItem:hover .card-footer {
+  background-color: #204969a5 !important;
 }
 
 .item:after {
@@ -892,7 +905,7 @@ div.content {
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
 }
-.card:hover .item-desc {
+.cardItem:hover .item-desc {
   transform: none;
   -webkit-transform: none;
 }
@@ -903,7 +916,7 @@ div.content {
   transition: all 0.4s ease-in-out 0.2s;
   -webkit-transition: all 0.4s ease-in-out 0.2s;
 }
-.card:hover .item-desc p {
+.cardItem:hover .item-desc p {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
@@ -918,13 +931,13 @@ div.content {
   text-align: center;
   width: max-content;
   color: white;
-  background-color: #204969;
+  background-color: #204969a5;
   padding: 4px;
 }
 
 .cardBtn:hover {
   background: white;
-  color: #204969;
+  color: #204969a5;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: 2px solid white;
@@ -947,7 +960,7 @@ div.content {
     transform: translateY(calc(100% - (-30px)));
     -webkit-transform: translateY(calc(100% - (-30px)));
   }
-  .card {
+  .cardItem {
     margin-right: 1px;
   }
 }
@@ -957,7 +970,7 @@ div.content {
     transform: translateY(calc(100% - (-30px)));
     -webkit-transform: translateY(calc(100% - (-30px)));
   }
-  .card {
+  .cardItem {
     margin-right: 1px;
   }
 }
@@ -968,7 +981,240 @@ div.content {
     transform: translateY(calc(100% - (-30px)));
     -webkit-transform: translateY(calc(100% - (-30px)));
   }
-  .card {
+  .cardItem {
     margin-right: 1px;
   }
+}
+
+.card-img-top {
+  width: 150px !important;
+}
+
+.card-brand {
+  margin: 5px 1px;
+  height: 150px !important;
+}
+
+.card-brand:hover {
+  box-shadow: 3px 3px 20px lightsteelblue !important;
+}
+
+/* opt page */
+
+.otp-field {
+  flex-direction: row;
+  column-gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resend {
+  font-size: 12px;
+}
+
+/* Admin sidebar */
+
+.sidebarAdmin {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #204969;
+  overflow: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #204969 #204969;
+  width: 16rem;
+  padding: 1.8rem 0.85rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.5s ease-in-out;
+}
+
+.sidebarAdmin::before {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+.sidebar-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 5px 0px -15px 15px;
+}
+.sidebar-top .logo {
+  width: 2.1rem;
+  margin: 0 0.8rem;
+}
+.sidebar-top h3 {
+  padding-left: 0.5rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.search {
+  min-height: 2.7rem;
+  background-color: #6e8185;
+  margin: 2rem 0.5rem 1.7rem;
+  display: grid;
+  grid-template-columns: 2.7rem 1fr;
+  align-items: center;
+  text-align: center;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.search input {
+  height: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  caret-color: #fff;
+  font-family: inherit;
+}
+.search input::placeholder {
+  color: #fff;
+}
+.sidebar-links ul {
+  position: relative;
+  list-style: none;
+}
+.sidebar-links li {
+  position: relative;
+  padding: 2.5px 0;
+}
+.sidebar-links a {
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  height: 53px;
+}
+
+.tooltip-element.active {
+  background-color: #001f38;
+  border-radius: 14px;
+  min-width: 60px;
+  padding-left: 18px;
+  margin-left: -16px;
+}
+.sidebar-links h4 {
+  position: relative;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0 0.8rem;
+  color: var(--text-color);
+  letter-spacing: 0.5px;
+  height: 45px;
+  line-height: 45px;
+  transition: opacity 0.3s 0.2s, height 0.5s 0s;
+}
+.sidebar-footer {
+  position: relative;
+  margin-top: auto;
+}
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  height: 53px;
+  width: 3.7rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s 0s, color 0.3s 0s;
+}
+.account:hover {
+  color: #fff;
+}
+.admin-user {
+  display: flex;
+  align-items: center;
+}
+.admin-profile {
+  white-space: nowrap;
+  max-width: 100%;
+  transition: opacity 0.3s 0.2s, max-width 0.7s 0s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+.admin-user img {
+  width: 2.9rem;
+  border-radius: 50%;
+  margin: 0 0.4rem;
+}
+.admin-info {
+  padding-left: 0.3rem;
+}
+.admin-info h3 {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+}
+.admin-info h5 {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: #fff;
+  margin-top: 0.3rem;
+  line-height: 1;
+}
+.log-out {
+  display: flex;
+  height: 40px;
+  min-width: 2.4rem;
+  background-color: #001f38;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border-radius: 10px;
+  margin: 0 0.65rem;
+  transition: color 0.3s;
+}
+.log-out:hover {
+  color: #fff;
+}
+
+/* When the menu shrinks */
+.hide {
+  transition: opacity 0.3s 0.2s;
+}
+body.shrink .sidebarAdmin {
+  width: 5.8rem;
+}
+body.shrink .hide {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0s;
+}
+
+.iconSideBar {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
+
+body.shrink .headingSidebar {
+  font-size: xx-small;
+}
+
+body.shrink .miniIcon {
+  font-size: larger;
+  transition: 0.3s;
+}
+
+body.shrink .sidebar-links {
+  margin-left: -14px;
+}
+
+body.shrink .sidebar-links h4 {
+  height: 10px;
 }

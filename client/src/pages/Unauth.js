@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../pages/logo/403.png";
+import { useAuth } from "../context/auth";
 
 const Unauth = () => {
   const [count, setCount] = useState(5);
+
+  const [auth] = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -12,14 +15,14 @@ const Unauth = () => {
       setCount((preValue) => --preValue);
     }, 1000);
     count === 0 &&
-      navigate("/login", {
+      navigate(`${auth ? "/" : "/login"}`, {
         state: location.pathname,
       });
     return () => clearInterval(interval);
-  }, [count, navigate, location]);
+  }, [count, navigate, location, auth]);
 
   const onLogIn = () => {
-    navigate("/login", {
+    navigate(`${auth ? "/" : "/login"}`, {
       state: location.pathname,
     });
   };
@@ -38,11 +41,12 @@ const Unauth = () => {
         />
         <p>
           <button className="a" onClick={onLogIn}>
-            Please, go back Login.
+            Please, go back {auth ? "home" : "login"}.
           </button>
         </p>
         <pre className="redirect">
-          Otherwise, we will redirect to the home page in {count} seconds.
+          Otherwise, we will redirect to the {auth ? "home" : "login"} page in{" "}
+          {count} seconds.
         </pre>
       </div>
     </>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./apkaBazzar.png";
 // import { FaRegMoon } from "react-icons/fa";
+// import { IoSunnyOutline } from "react-icons/io5";
 import { useAuth } from "../../context/auth.js";
 import { toast, Zoom } from "react-toastify";
 import { CgProfile } from "react-icons/cg";
@@ -12,7 +13,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
 // import { BiSolidOffer } from "react-icons/bi";
-import { MdLanguage } from "react-icons/md";
+import { MdDashboard, MdLanguage } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoIosMenu } from "react-icons/io";
@@ -60,6 +61,8 @@ function Header(props) {
       user: null,
       tocken: "",
     });
+
+    localStorage.removeItem("auth");
     toast.success("Logout Successfully", {
       position: "top-right",
       autoClose: 3000,
@@ -124,6 +127,34 @@ function Header(props) {
                 </NavLink>
               </div>
             </h5>
+            {/* <button
+              className="switch"
+              id="switch"
+              onClick={props.toggleMode}
+              style={{
+                backgroundColor: props.mode === "light" ? "#D3D3D3" : "#0B1423",
+              }}
+            >
+              {props.mode === "light" ? (
+                <IoSunnyOutline
+                  className={`switch-light`}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    color: "#D14009",
+                  }}
+                />
+              ) : (
+                <FaRegMoon
+                  className={`switch-dark`}
+                  style={{
+                    color: "#dcdcdc",
+                    width: "20px",
+                    height: "20px",
+                  }}
+                />
+              )}
+            </button> */}
           </div>
           <div
             className="offcanvas-body"
@@ -226,6 +257,11 @@ function Header(props) {
               {ip ? (
                 <>
                   {cityip}, {country}
+                  {auth.user !== null
+                    ? auth.user.pincode === ""
+                      ? null
+                      : `, ${auth.user.pincode}`
+                    : null}
                 </>
               ) : null}
             </div>
@@ -336,7 +372,7 @@ function Header(props) {
                   <ul>
                     <li>
                       <NavLink
-                        to="/profile"
+                        to="/dashboard/profile"
                         style={{
                           color: props.mode === "dark" ? "white" : "#204969",
                         }}
@@ -352,7 +388,7 @@ function Header(props) {
                     </li>
                     <li>
                       <NavLink
-                        to="/updateprofile"
+                        to="/dashboard/updateprofile"
                         style={{
                           color: props.mode === "dark" ? "white" : "#204969",
                         }}
@@ -366,6 +402,26 @@ function Header(props) {
                         Edit profile
                       </NavLink>
                     </li>
+                    {auth?.user?.role === 1 ? (
+                      <li>
+                        <NavLink
+                          to="/dashboard/admin"
+                          style={{
+                            color: props.mode === "dark" ? "white" : "#204969",
+                          }}
+                        >
+                          <MdDashboard
+                            style={{
+                              width: "20px",
+                              height: "20px",
+                            }}
+                          />
+                          Dashboard
+                        </NavLink>
+                      </li>
+                    ) : (
+                      <></>
+                    )}
                     <li>
                       <NavLink
                         to="/!#"

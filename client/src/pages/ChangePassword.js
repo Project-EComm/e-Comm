@@ -1,26 +1,19 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { IoIosMailUnread } from "react-icons/io";
-import { RiLockPasswordFill } from "react-icons/ri";
-import Logo from "./logo/loginbg.png";
-import axios from "axios";
 import { toast, Zoom } from "react-toastify";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/auth.js";
-
-const Login = (props) => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-  const [auth, setauth] = useAuth();
-
+import axios from "axios";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+const ChangePassword = (props) => {
+  const [pass, setPass] = useState("");
+  const [cpass, setCPass] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    // Check if any of the required fields are empty
-    if (email.trim() === "" || password.trim() === "") {
-      toast.warning("Please Fill All Details", {
+  const handleSubmit = async (e) => {
+    console.log("Handle submit triggered:", pass, cpass);
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    if (pass !== cpass) {
+      toast.warning("Passwords do not match", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -31,17 +24,22 @@ const Login = (props) => {
         theme: "light",
         transition: Zoom,
       });
-      return; // Prevent further execution if there are empty fields
+      return; // Prevent further execution if passwords do not match
     }
 
-    // If all validations pass, you can proceed with further actions
-
     try {
-      const res = await axios.post("http://localhost:8080/api/v1/auth/login", {
-        email,
-        password,
-      });
+      // Make the API call to update the address
+      const res = await axios.post(
+        "http://localhost:8080/api/v1/auth/passUpdate",
+        {
+          email: props.userMail,
+          password: pass,
+        }
+      );
+
       if (res.data.success) {
+        // Display success toast message
+        navigate("/login");
         toast.success(res.data.message, {
           position: "top-right",
           autoClose: 3000,
@@ -53,16 +51,8 @@ const Login = (props) => {
           theme: "light",
           transition: Zoom,
         });
-
-        setauth({
-          ...auth,
-          user: res.data.user,
-          tocken: res.data.tocken,
-        });
-
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/");
       } else {
+        // Display warning toast message for API call failure
         toast.warning(res.data.message, {
           position: "top-right",
           autoClose: 3000,
@@ -76,8 +66,9 @@ const Login = (props) => {
         });
       }
     } catch (error) {
-      console.log(error);
-      toast.error("No User Found", {
+      // Handle API call error
+      console.error(error);
+      toast.error("Something went wrong", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -89,34 +80,14 @@ const Login = (props) => {
         transition: Zoom,
       });
     }
-
-    // Add your additional logic here, such as making an API call to register the user
-  }
-
+  };
   return (
-    <>
-      {/* Navbar*/}
+    <div>
       <div className={`container`}>
         <div className="row py-5 mt-4 align-items-center">
           <div className="col-md-5 pr-lg-5 mb-3 mb-md-0">
-            <h1
-              style={{
-                color: props.mode === "dark" ? "white" : "#204969",
-              }}
-            >
-              Welcome back to ApkaBazzar
-            </h1>
-            <p
-              className="font-italic mb-0"
-              style={{
-                color: props.mode === "dark" ? "#a1a6a6" : "#000000",
-              }}
-            >
-              Ready to continue your shopping journey?
-              <br /> Log in now and let the shopping spree begin!
-            </p>
             <img
-              src={Logo}
+              src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1095.jpg"
               alt="icon"
               className="img-fluid mb-3 d-md-block"
             ></img>
@@ -128,11 +99,10 @@ const Login = (props) => {
                 color: props.mode === "dark" ? "white" : "#204969",
               }}
             >
-              Login
+              Change Password
             </h1>
             <form onSubmit={handleSubmit}>
               <div className="row">
-                {/* Email Address */}
                 <div className="input-group col-lg-6 mb-4">
                   <div className="input-group-prepend inputSpan">
                     <span
@@ -146,16 +116,16 @@ const Login = (props) => {
                         borderRadius: "8px 0px 0px 8px",
                       }}
                     >
-                      <IoIosMailUnread />
+                      <RiLockPasswordFill />
                     </span>
                   </div>
                   <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setemail(e.target.value)}
-                    placeholder="Email Address"
+                    id="pass"
+                    type="password"
+                    name="pass"
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                    placeholder="New Password"
                     className="form-control  border-md rgisterInput"
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
@@ -183,12 +153,12 @@ const Login = (props) => {
                     </span>
                   </div>
                   <input
-                    id="password"
+                    id="cpass"
                     type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setpassword(e.target.value)}
+                    name="cpass"
+                    placeholder="Confirm Password"
+                    value={cpass}
+                    onChange={(e) => setCPass(e.target.value)}
                     className="form-control  border-md rgisterInput"
                     style={{
                       color: props.mode === "dark" ? "white" : "#000000",
@@ -198,46 +168,22 @@ const Login = (props) => {
                     }}
                   />
                 </div>
-                <div className="d-flex justify-content-end">
-                  <div className="mb-2">
-                    <div className="col">
-                      <NavLink to="/forgetPassword">Forgot password?</NavLink>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Submit Button */}
                 <div className="form-group col-lg-12 mx-auto mb-0">
                   <button
                     type="submit"
                     className="btn btn-primary btn-block py-2 btnEnter"
                   >
-                    <span className="font-weight-bold">
-                      Create your account
-                    </span>
+                    <span className="font-weight-bold">Change Password</span>
                   </button>
-                </div>
-                {/* Already Registered */}
-                <div className="text-center w-100 mt-3">
-                  <p
-                    className="font-weight-bold"
-                    style={{
-                      color: props.mode === "dark" ? "#a1a6a6" : "#000000",
-                    }}
-                  >
-                    New User?{" "}
-                    <NavLink to="/register" className="text-primary ml-2">
-                      Register
-                    </NavLink>
-                  </p>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Login;
+export default ChangePassword;

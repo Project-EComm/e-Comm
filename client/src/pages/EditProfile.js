@@ -9,10 +9,11 @@ const EditProfile = (props) => {
   const [lname, setlname] = useState("");
   const [pnumber, setpnumber] = useState("");
   const [ccode] = useState("");
+  const [mail, setMail] = useState("");
   const [pinc, setpinc] = useState("");
   const [cityName, setcityName] = useState("");
-  const [add, setAdd] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [add, setAdd] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ const EditProfile = (props) => {
       const res = await axios.post(
         "http://localhost:8080/api/v1/auth/addUpdate",
         {
-          email: email,
+          email: mail,
           first_name: fname,
           last_name: lname,
           phoneNumber: pnumber,
@@ -56,6 +57,7 @@ const EditProfile = (props) => {
           ...auth,
           user: {
             ...auth.user,
+            email: mail,
             first_name: fname,
             last_name: lname,
             phoneNumber: pnumber,
@@ -73,6 +75,7 @@ const EditProfile = (props) => {
             ...auth,
             user: {
               ...auth.user,
+              email: mail,
               first_name: fname,
               last_name: lname,
               phoneNumber: pnumber,
@@ -147,7 +150,7 @@ const EditProfile = (props) => {
                 }`,
               }}
             >
-              <div className="card-body">
+              <div className="card-body card-bodyProfile">
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
                     src="https://bootdey.com/img/Content/avatar/avatar7.png"
@@ -192,7 +195,7 @@ const EditProfile = (props) => {
                 }`,
               }}
             >
-              <div className="card-body">
+              <div className="card-body card-bodyProfile">
                 <p className="card-heading">My Account</p>
                 <form onSubmit={handleSubmit}>
                   <div className="row">
@@ -237,7 +240,18 @@ const EditProfile = (props) => {
                     <div className="col-sm-3">
                       <h6 className="mb-0">Email</h6>
                     </div>
-                    <div className="col-sm-9 text-secondary">{email}</div>
+                    <div className="col-sm-9 text-secondary">
+                      {" "}
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          value={mail}
+                          onChange={(e) => setMail(e.target.value)}
+                        />
+                      ) : (
+                        <span>{email === "" ? "Not Provided" : email}</span>
+                      )}
+                    </div>
                   </div>
                   <hr />
                   <div className="row">
