@@ -23,14 +23,22 @@ import AdminDashboard from "./pages/Admin/AdminDashboard.js";
 import UsersDashboard from "./pages/Admin/UsersDashboard.js";
 import AdminsDashboard from "./pages/Admin/AdminsDashboard";
 import Messages from "./pages/Admin/Messages";
-import CreateProduct from "./pages/Admin/CreateProduct";
-import UpdateProduct from "./pages/Admin/UpdateProduct";
 import CreateCategory from "./pages/Admin/CreateCategory";
-import DeleteCategory from "./pages/Admin/DeleteCategory";
-import DeleteProduct from "./pages/Admin/DeleteProduct.js";
-import UpdateCategory from "./pages/Admin/UpdateCategory.js";
 import YourOrder from "./pages/YourOrder";
 import PasswordChange from "./pages/PasswordChange.js";
+import AboutUs from "./pages/AboutUs.js";
+import Product from "./pages/Admin/Product.js";
+import UpdateProduct from "./pages/Admin/UpdateProduct.js";
+import CreateProduct from "./pages/Admin/CreateProduct.js";
+import SearchProduct from "./pages/SearchProduct.js";
+import Electronic from "./pages/Electronic.js";
+import Fashion from "./pages/Fashion";
+import Beauty from "./pages/Beauty";
+import HomeandKitchen from "./pages/HomeandKitchen";
+import Stationary from "./pages/Stationary";
+import Furniture from "./pages/Furniture";
+import Fresh from "./pages/Fresh";
+import Grocery from "./pages/Grocery";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -64,8 +72,8 @@ function App() {
           element={<OtpEnter mode={mode} userMail={userMail} />}
         />
         <Route
-          path="/passwordChange"
-          element={<PasswordChange mode={mode} userMail={userMail} />}
+          path="/changePassword"
+          element={<ChangePassword mode={mode} userMail={userMail} />}
         />
 
         <Route path="/dashboard" element={<PrivateRoute />}>
@@ -101,33 +109,33 @@ function App() {
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="messages" element={<Messages />}></Route>
+          <Route path="product" element={<Product />}></Route>
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="createProduct" element={<CreateProduct />}></Route>
+          <Route path="updateProduct/:slug" element={<UpdateProduct />}></Route>
         </Route>
 
-        <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="updateProduct" element={<UpdateProduct />}></Route>
-        </Route>
+        <Route path="/electronicItems" element={<Electronic />} />
+        <Route path="/fashion" element={<Fashion />} />
+        <Route path="/beauty" element={<Beauty />} />
+        <Route path="/homeandkitchen" element={<HomeandKitchen />} />
+        <Route path="/stationary" element={<Stationary />} />
+        <Route path="/furniture" element={<Furniture />} />
+        <Route path="/fresh" element={<Fresh />} />
+        <Route path="/grocery" element={<Grocery />} />
+
+        <Route path="/search/:query" element={<SearchProduct mode={mode} />} />
 
         <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="deleteProduct" element={<DeleteProduct />}></Route>
+          <Route path="createproduct" element={<CreateProduct />}></Route>
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="createCategory" element={<CreateCategory />}></Route>
         </Route>
 
-        <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="updateCategory" element={<UpdateCategory />}></Route>
-        </Route>
-
-        <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="deleteCategory" element={<DeleteCategory />}></Route>
-        </Route>
-
+        <Route path="/aboutus" element={<AboutUs mode={mode} />} />
         <Route path="/cautionNotice" element={<CautionNotice mode={mode} />} />
         <Route path="/*" element={<PageNotFound mode={mode} />} />
         <Route path="/verifyEmail" element={<VerifyEmailComp mode={mode} />} />

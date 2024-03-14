@@ -155,7 +155,7 @@ const UpdateCategory = () => {
           </nav>
         </div>
         <div className="col">
-          <h1>Admins DashBoard</h1>
+          <h1>Update Category</h1>
         </div>
       </div>
     </>

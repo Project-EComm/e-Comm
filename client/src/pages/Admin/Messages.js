@@ -1,164 +1,152 @@
-import React, { useState } from "react";
-import { BiCategory, BiSearch, BiUser } from "react-icons/bi";
-import { IoCloseCircleOutline, IoCreate } from "react-icons/io5";
-import { MdDashboard, MdDelete, MdMessage, MdUpdate } from "react-icons/md";
-import logo from "../../component/layout/apkaBazzar.png";
-import { RiAdminFill } from "react-icons/ri";
-import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
+import React, { useState, useRef } from "react";
+import { useAuth } from "../../context/auth";
+import { IoIosSend } from "react-icons/io";
+import axios from "axios";
+import { toast, Zoom } from "react-toastify";
+const Messages = ({ mail }) => {
+  const [auth] = useAuth();
+  const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
+  const [response, setResponse] = useState(null);
+  const formRef = useRef(null);
 
-const Messages = () => {
-  const [isOpen, setisOpen] = useState(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleShrinkClick = () => {
-    document.body.classList.toggle("shrink");
-    setisOpen(!isOpen);
-  };
+    try {
+      // Make a request to your backend API
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/auth/sendMessage",
+        {
+          email: mail,
+          subject: subject,
+          message: message,
+          sender: auth?.user?.email,
+        }
+      );
 
-  const handleSearchClick = () => {
-    document.body.classList.remove("shrink");
+      // Handle the response
+      toast.success(response.data.message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+
+      console.log("Message sent successfully:", response.data.message);
+      setResponse(response.data.message);
+      setMessage("");
+      setSubject("");
+    } catch (error) {
+      console.error("Error sending message:", error.message);
+      setResponse("Failed to send message. Please try again.");
+    }
   };
 
   return (
-    <>
-      <div className="row">
-        <div className="col">
-          <nav className="sidebarAdmin">
+    <div className="card border-success mb-3" style={{ width: "100%" }}>
+      <div
+        className="card-header"
+        style={{
+          border: "none",
+        }}
+      >
+        <h6
+          className="text-center"
+          style={{
+            fontWeight: "bloder",
+            color: "#204969",
+          }}
+        >
+          Send a Message
+        </h6>
+      </div>
+      <hr className="my-0" />
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <div
+          className="card-body"
+          style={{
+            marginTop: "-25px",
+          }}
+        >
+          <div className="row d-flex align-items-center">
             <div
+              className="col-auto labelH"
               style={{
-                marginTop: "-30px",
-                textAlign: "right",
-                fontSize: "20px",
+                fontWeight: "500",
               }}
             >
-              {" "}
-              {isOpen ? (
-                <IoCloseCircleOutline onClick={handleShrinkClick} />
-              ) : (
-                <TbLayoutSidebarRightCollapseFilled
-                  onClick={handleShrinkClick}
-                />
-              )}{" "}
+              To:{" "}
             </div>
-            <div className="sidebar-top">
-              <NavLink
-                className="navbar-brand brand"
-                to="/"
-                style={{
-                  color: "white",
-                  fontSize: "15px",
-                }}
-              >
-                <img src={logo} alt="logo" style={{ width: "25px" }} />{" "}
-                <h3 className="hide">apkaBazzar</h3>
-              </NavLink>
-            </div>
-            <div className="search" onClick={handleSearchClick}>
-              <BiSearch className="ms-auto me-auto" />
+            <div className="col input" style={{ marginLeft: "-25px" }}>
               <input
-                type="text"
-                className="hide"
-                placeholder="Quick Search ..."
+                type="email"
+                value={mail}
+                disabled="disabled"
+                style={{
+                  cursor: "not-allowed",
+                }}
+                className="form-controlMail w-100"
               />
             </div>
-            <div className="sidebar-links">
-              <ul>
-                <div className="active-tab" id="activeTab" />
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/admin">
-                    <div className="iconSideBar">
-                      <MdDashboard className="miniIcon" />
-                    </div>
-                    <span className="link hide">Dashboard</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/users">
-                    <div className="iconSideBar">
-                      <BiUser className="miniIcon" />
-                    </div>
-                    <span className="link hide">Users</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/admins">
-                    <div className="iconSideBar">
-                      <RiAdminFill className="miniIcon" />
-                    </div>
-                    <span className="link hide">Admins</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element active">
-                  <NavLink to="/dashboard/messages">
-                    <div className="iconSideBar">
-                      <MdMessage className="miniIcon" />
-                    </div>
-                    <span className="link hide">Messages</span>
-                  </NavLink>
-                </li>
-              </ul>
-              <h4 className="headingSidebar">Product</h4>
-              <ul>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/createProduct">
-                    <div className="iconSideBar">
-                      <IoCreate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Create Product</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/updateProduct">
-                    <div className="iconSideBar">
-                      <MdUpdate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Update Product</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/deleteProduct">
-                    <div className="iconSideBar">
-                      <MdDelete className="miniIcon" />
-                    </div>
-                    <span className="link hide">Delete Product</span>
-                  </NavLink>
-                </li>
-              </ul>
-              <h4 className="headingSidebar">Category</h4>
-              <ul>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/createCategory">
-                    <div className="iconSideBar">
-                      <BiCategory className="miniIcon" />
-                    </div>
-                    <span className="link hide">Create Category</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/updateCategory">
-                    <div className="iconSideBar">
-                      <MdUpdate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Update Category</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/deleteCategory">
-                    <div className="iconSideBar">
-                      <MdDelete className="miniIcon" />
-                    </div>
-                    <span className="link hide">Delete Category</span>
-                  </NavLink>
-                </li>
-              </ul>
+          </div>
+          <div className="row d-flex align-items-center">
+            <div
+              className="labelH"
+              style={{
+                fontWeight: "500",
+              }}
+            >
+              Subject:{" "}
             </div>
-          </nav>
+            <div className="input">
+              <p className="card-text" style={{ marginLeft: "-10px" }}>
+                <input
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  required
+                  type="text"
+                  className="form-controlMail"
+                  placeholder="Enter Subject"
+                />
+              </p>
+            </div>
+          </div>
+
+          <div className="row d-flex align-items-center">
+            <div
+              className="labelH"
+              style={{
+                fontWeight: "500",
+              }}
+            >
+              Message:{" "}
+            </div>
+            <div className="input">
+              <p className="card-text" style={{ marginLeft: "-10px" }}>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  className="form-controlMail"
+                  placeholder="Enter message"
+                />
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="col">
-          <h1>Message DashBoard</h1>
+        <div className="card-footer text-center">
+          <button type="submit" className="btn btn-create btn-jelly">
+            <IoIosSend size={15} /> Send Message
+          </button>
         </div>
-      </div>
-    </>
+      </form>
+    </div>
   );
 };
 

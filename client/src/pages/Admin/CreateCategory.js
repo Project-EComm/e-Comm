@@ -1,161 +1,349 @@
-import React, { useState } from "react";
-import { BiCategory, BiSearch, BiUser } from "react-icons/bi";
-import { IoCloseCircleOutline, IoCreate } from "react-icons/io5";
-import { MdDashboard, MdDelete, MdMessage, MdUpdate } from "react-icons/md";
-import logo from "../../component/layout/apkaBazzar.png";
-import { RiAdminFill } from "react-icons/ri";
-import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { toast, Zoom } from "react-toastify";
+import axios from "axios";
+import { useAuth } from "../../context/auth";
+import CategoryForm from "../../component/Form/CategoryForm";
+import { Modal } from "antd";
 
 const CreateCategory = () => {
-  const [isOpen, setisOpen] = useState(true);
+  const [auth] = useAuth();
+  const [categories, setCategories] = useState([]);
+  const [name, setName] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [updatedName, setUpdatedName] = useState("");
 
-  const handleShrinkClick = () => {
-    document.body.classList.toggle("shrink");
-    setisOpen(!isOpen);
+  //handle Form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        "http://localhost:8080/api/v1/category/create-category",
+        {
+          name,
+        }
+      );
+      if (data?.success) {
+        toast.success(`${name} is created`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+        getAllCategory();
+      } else {
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Somthing went wrong in input form", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+    }
   };
 
-  const handleSearchClick = () => {
-    document.body.classList.remove("shrink");
+  //get all cat
+  const getAllCategory = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/category/get-category"
+      );
+      if (data.success) {
+        setCategories(data.category);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong in getting catgeory", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+  //update category
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put(
+        `http://localhost:8080/api/v1/category/update-category/${selected._id}`,
+        { name: updatedName }
+      );
+      if (data.success) {
+        toast.success(`${updatedName} is updated`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+        setSelected(null);
+        setUpdatedName("");
+        setVisible(false);
+        getAllCategory();
+      } else {
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error) {
+      toast.error("Something wwent wrong", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+    }
+  };
+  //delete category
+  const handleDelete = async (pId) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:8080/api/v1/category/delete-category/${pId}`
+      );
+      if (data.success) {
+        toast.success("Category deleted", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+
+        getAllCategory();
+      } else {
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Zoom,
+        });
+      }
+    } catch (error) {
+      toast.error("Something wwent wrong", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Zoom,
+      });
+    }
   };
 
   return (
     <>
-      <div className="row">
-        <div className="col">
-          <nav className="sidebarAdmin">
-            <div
-              style={{
-                marginTop: "-30px",
-                textAlign: "right",
-                fontSize: "20px",
-              }}
-            >
-              {" "}
-              {isOpen ? (
-                <IoCloseCircleOutline onClick={handleShrinkClick} />
-              ) : (
-                <TbLayoutSidebarRightCollapseFilled
-                  onClick={handleShrinkClick}
-                />
-              )}{" "}
-            </div>
-            <div className="sidebar-top">
-              <NavLink
-                className="navbar-brand brand"
-                to="/"
+      <div className="content">
+        <div className="main-body">
+          {/* Breadcrumb */}
+          <div className="row gutters-sm">
+            <div className="col-md-4 mb-2">
+              <div
+                className="card"
                 style={{
-                  color: "white",
-                  fontSize: "15px",
+                  border: "1px solid black`,",
                 }}
               >
-                <img src={logo} alt="logo" style={{ width: "25px" }} />{" "}
-                <h3 className="hide">apkaBazzar</h3>
-              </NavLink>
+                <div className="card-body card-bodyProfile">
+                  <div className="d-flex flex-column align-items-center text-center">
+                    <img
+                      src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                      alt="Admin"
+                      className="rounded-circle"
+                      width={80}
+                    />
+                    <div className="mt-2">
+                      <h4>
+                        {auth?.user?.first_name + " " + auth?.user?.last_name}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card mt-4">
+                <div
+                  className="sidebar"
+                  style={{
+                    border: "1px solid black",
+                  }}
+                >
+                  <NavLink to="/dashboard/admin">DashBoard</NavLink>
+                  <NavLink to="/dashboard/users">Users</NavLink>
+                  <NavLink to="/dashboard/admins">Admins</NavLink>
+
+                  <NavLink to="/dashboard/product">Product</NavLink>
+                  <NavLink to="/dashboard/createCategory">Category</NavLink>
+                </div>
+              </div>
             </div>
-            <div className="search" onClick={handleSearchClick}>
-              <BiSearch className="ms-auto me-auto" />
-              <input
-                type="text"
-                className="hide"
-                placeholder="Quick Search ..."
-              />
+            <div className="col-md-8">
+              <div
+                className="card mb-3"
+                style={{
+                  border: "1px solid black",
+                }}
+              >
+                <div className="card-body card-bodyProfile">
+                  <p className="card-heading">Create Category</p>
+                  <form onSubmit={handleSubmit}>
+                    <div className="row">
+                      <div className="col-sm-9 col-md-8 text-secondary">
+                        <input
+                          type="text"
+                          value={name}
+                          className="form-controlCategory d-none d-md-block"
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                        <input
+                          type="text"
+                          value={name}
+                          className="form-controlCategory form-control d-sm-block d-md-none"
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+                      <div className="col-sm-3 col-md-2 mt-2 mt-md-0 text-center">
+                        <button
+                          className="btn btn-primary btn-jelly"
+                          type="submit"
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <hr />
+                  <p className="card-heading">Categories</p>
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <div className="table-responsive shadow-z-1">
+                        <table
+                          id="table"
+                          className="table table-hover table-mc-light-blue"
+                        >
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Update</th>
+                              <th>Delete</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {categories?.map((c) => (
+                              <tr key={c._id}>
+                                <td data-title="ID">
+                                  {categories.indexOf(c) + 1}
+                                </td>
+                                <td data-title="Name" className="nameColumn">
+                                  {c.name}
+                                </td>
+                                <td data-title="Edit">
+                                  <button
+                                    className="btn btn-primary btn-jelly"
+                                    onClick={() => {
+                                      setVisible(true);
+                                      setUpdatedName(c.name);
+                                      setSelected(c);
+                                    }}
+                                  >
+                                    Edit
+                                  </button>
+                                </td>
+                                <td data-title="Delete">
+                                  <button
+                                    className="btn btn-danger btn-jelly ms-1"
+                                    onClick={() => {
+                                      handleDelete(c._id);
+                                    }}
+                                  >
+                                    Delete
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <Modal
+                        onCancel={() => setVisible(false)}
+                        footer={null}
+                        open={visible}
+                      >
+                        <CategoryForm
+                          value={updatedName}
+                          setValue={setUpdatedName}
+                          handleSubmit={handleUpdate}
+                        />
+                      </Modal>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="sidebar-links">
-              <ul>
-                <div className="active-tab" id="activeTab" />
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/admin">
-                    <div className="iconSideBar">
-                      <MdDashboard className="miniIcon" />
-                    </div>
-                    <span className="link hide">Dashboard</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/users">
-                    <div className="iconSideBar">
-                      <BiUser className="miniIcon" />
-                    </div>
-                    <span className="link hide">Users</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/admins">
-                    <div className="iconSideBar">
-                      <RiAdminFill className="miniIcon" />
-                    </div>
-                    <span className="link hide">Admins</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/messages">
-                    <div className="iconSideBar">
-                      <MdMessage className="miniIcon" />
-                    </div>
-                    <span className="link hide">Messages</span>
-                  </NavLink>
-                </li>
-              </ul>
-              <h4 className="headingSidebar">Product</h4>
-              <ul>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/createProduct">
-                    <div className="iconSideBar">
-                      <IoCreate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Create Product</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/updateProduct">
-                    <div className="iconSideBar">
-                      <MdUpdate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Update Product</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/deleteProduct">
-                    <div className="iconSideBar">
-                      <MdDelete className="miniIcon" />
-                    </div>
-                    <span className="link hide">Delete Product</span>
-                  </NavLink>
-                </li>
-              </ul>
-              <h4 className="headingSidebar">Category</h4>
-              <ul>
-                <li className="tooltip-element active">
-                  <NavLink to="/dashboard/createCategory">
-                    <div className="iconSideBar">
-                      <BiCategory className="miniIcon" />
-                    </div>
-                    <span className="link hide">Create Category</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/updateCategory">
-                    <div className="iconSideBar">
-                      <MdUpdate className="miniIcon" />
-                    </div>
-                    <span className="link hide">Update Category</span>
-                  </NavLink>
-                </li>
-                <li className="tooltip-element">
-                  <NavLink to="/dashboard/deleteCategory">
-                    <div className="iconSideBar">
-                      <MdDelete className="miniIcon" />
-                    </div>
-                    <span className="link hide">Delete Category</span>
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div className="col">
-          <h1>Admins DashBoard</h1>
+          </div>
         </div>
       </div>
     </>

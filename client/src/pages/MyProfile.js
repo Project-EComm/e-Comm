@@ -245,14 +245,15 @@ const MyProfile = (props) => {
                   </div>
                   <hr />
                   <div className="row text-center">
-                    <div className="col-sm-12">
-                      <NavLink
-                        className="btn btn-info btn-edit"
-                        to="/dashboard/updateprofile"
-                      >
-                        Edit
-                      </NavLink>
-                    </div>
+                    <NavLink
+                      className="btn btn-info btn-edit ms-auto me-auto"
+                      to="/dashboard/updateprofile"
+                      style={{
+                        width: "30%",
+                      }}
+                    >
+                      Edit
+                    </NavLink>
                   </div>
                 </div>
               </div>

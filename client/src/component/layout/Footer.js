@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHome, FaPhoneAlt, FaGooglePlay, FaAppStore } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Footer = (props) => {
   return (
@@ -33,7 +33,8 @@ const Footer = (props) => {
                 Our mission is to redefine grocery shopping with fresh,
                 wholesome, and ethically sourced products. Join us in
                 transforming your grocery experience – where quality meets
-                convenience, and community thrives.
+                convenience, and community thrives.{" "}
+                <NavLink to="/aboutus">Know More</NavLink>
               </p>
             </div>
             <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
@@ -128,19 +129,6 @@ const Footer = (props) => {
             <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
               <h5 className="text-uppercase mb-4">PRODUCT CATEGORIES</h5>
               <ul className="fa-ul" style={{ listStyle: "none" }}>
-                <li className="mb-3 ">
-                  <span>
-                    <Link
-                      to="/"
-                      style={{
-                        textDecoration: "none",
-                        color: props.mode === "dark" ? "white" : "#0B1423",
-                      }}
-                    >
-                      Grocery
-                    </Link>
-                  </span>
-                </li>
                 <li className="mb-3">
                   <span>
                     <Link
@@ -202,11 +190,23 @@ const Footer = (props) => {
                         color: props.mode === "dark" ? "white" : "#0B1423",
                       }}
                     >
-                      Fruits and Vegetables
+                      Fresh
                     </Link>
                   </span>
                 </li>
-
+                <li className="mb-3 ">
+                  <span>
+                    <Link
+                      to="/"
+                      style={{
+                        textDecoration: "none",
+                        color: props.mode === "dark" ? "white" : "#0B1423",
+                      }}
+                    >
+                      Grocery
+                    </Link>
+                  </span>
+                </li>
                 <li className="mb-3">
                   <span>
                     <Link

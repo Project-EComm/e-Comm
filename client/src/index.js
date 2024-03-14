@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth.js";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "antd/dist/reset.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

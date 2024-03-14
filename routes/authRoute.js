@@ -9,6 +9,11 @@ import {
   updatePassword,
   verifyMailOTP,
   verifyOtpEmail,
+  getAllUsers,
+  getAllAdmins,
+  removeAdminRole,
+  giveAdminRole,
+  sendMail,
 } from "../controllers/authController.js";
 
 import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
@@ -53,5 +58,20 @@ router.post("/sendEmailOTP", verifyMailOTP);
 
 // verifyEmail
 router.post("/verifyOtpEmail", verifyOtpEmail);
+
+// all users
+router.get("/all-users", requireSignIn, isAdmin, getAllUsers);
+
+// all admins
+router.get("/getAllAdmins", requireSignIn, isAdmin, getAllAdmins);
+
+// remove from admin
+router.put("/removeFromAdmin", requireSignIn, isAdmin, removeAdminRole);
+
+// add to admin
+router.put("/giveAdminRole", requireSignIn, isAdmin, giveAdminRole);
+
+// sendeMessage
+router.post("/sendMessage", requireSignIn, isAdmin, sendMail);
 
 export default router;

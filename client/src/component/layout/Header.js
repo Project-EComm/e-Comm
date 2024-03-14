@@ -22,15 +22,18 @@ import { BiCategory } from "react-icons/bi";
 import { CiHeart } from "react-icons/ci";
 import { IoMdTrendingUp } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
+import { Modal } from "antd";
+import SearchProduct from "./../../pages/SearchProduct.js";
 
 function Header(props) {
   const [auth, setauth] = useAuth();
-
   const [isMenuActive, setMenuActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [ip, setIp] = useState();
   const [cityip, setcityip] = useState();
   const [country, setcountry] = useState();
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(false);
 
   const getIp = async () => {
     // Connect ipapi.co with fetch()
@@ -164,7 +167,7 @@ function Header(props) {
               color: "black",
             }}
           >
-            <ul className="headingSideBar">
+            <ul className="headingSideBar" data-bs-dismiss="offcanvas">
               <NavLink
                 to="/"
                 style={{
@@ -180,38 +183,66 @@ function Header(props) {
               </NavLink>
             </ul>
             <ul className="NavLinks">
-              <li className="headingNavLinks">
-                <IoMdTrendingUp /> Trending
-              </li>
-              <li className="listNavLinks">Best Sellers</li>
-              <li className="listNavLinks">New Releases</li>
-              <li className="listNavLinks">Large Discount</li>
-            </ul>
-            <ul className="NavLinks">
               <li className="headingNavLinks">Top Categories for You</li>
-              <li className="listNavLinks">Women's Fashion</li>
-              <li className="listNavLinks">Mobile and Accessories</li>
-              <li className="listNavLinks">Beauty</li>
-              <li className="listNavLinks">Home and Kitchen</li>
-              <li className="listNavLinks">Sell All Categories</li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/fashion">
+                  Fashion
+                </NavLink>
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/electronicItems">
+                  Eletronics
+                </NavLink>
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/beauty">
+                  Beauty
+                </NavLink>
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/homeandkitchen">
+                  Home and Kitchen
+                </NavLink>
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/sellallcategories">
+                  Sell All Categories
+                </NavLink>
+              </li>
             </ul>
             <ul className="NavLinks">
-              <li className="headingNavLinks">Offers & History</li>
-              <li className="listNavLinks">Money Spent</li>
-              <li className="listNavLinks">Offer Store</li>
-              <li className="listNavLinks">Coupon Store</li>
+              <li className="headingNavLinks" data-bs-dismiss="offcanvas">
+                Offers & History
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                Money Spent
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                Offer Store
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                Coupon Store
+              </li>
             </ul>
             <ul className="NavLinks">
-              <li className="headingNavLinks">Help & Support</li>
-              <li className="listNavLinks">
+              <li className="headingNavLinks" data-bs-dismiss="offcanvas">
+                Help & Support
+              </li>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
                 {" "}
-                <NavLink className="text-dark">Privacy Policy</NavLink>
+                <NavLink className="text-dark" to="/policy">
+                  Privacy Policy
+                </NavLink>
               </li>
-              <li className="listNavLinks">
-                <NavLink className="text-dark">Refund Policy</NavLink>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/refundpolicy">
+                  Refund Policy
+                </NavLink>
               </li>
-              <li className="listNavLinks">
-                <NavLink className="text-dark">Caution Notice</NavLink>
+              <li className="listNavLinks" data-bs-dismiss="offcanvas">
+                <NavLink className="text-dark" to="/cautionNotice">
+                  Caution Notice
+                </NavLink>
               </li>
             </ul>
             <div className="sideNavFooter ps-4 pb-3">
@@ -279,6 +310,8 @@ function Header(props) {
               autoComplete="off"
               type="search"
               className="form-control rounded"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="Search"
               style={{
                 color: props.mode === "dark" ? "white" : "#204969",
@@ -292,6 +325,9 @@ function Header(props) {
                 backgroundColor: "#0cc0df",
                 border: "1px solid white",
                 borderRadius: "0px",
+              }}
+              onClick={() => {
+                setVisible(true);
               }}
             >
               <i className="fas fa-search text-light" />
@@ -317,7 +353,11 @@ function Header(props) {
           {auth.user ? (
             <>
               <div className="action">
-                <div className="profile" onClick={menuToggle}>
+                <div
+                  className="profile"
+                  onClick={menuToggle}
+                  onMouseEnter={menuToggle}
+                >
                   <img
                     src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
                     alt="Profile Avatar"
@@ -325,6 +365,7 @@ function Header(props) {
                 </div>
                 <div
                   className={`menu ${isMenuActive ? "active" : ""}`}
+                  onMouseLeave={menuToggle}
                   style={{
                     color: props.mode === "dark" ? "white" : "#204969",
                     backgroundColor:
@@ -461,7 +502,11 @@ function Header(props) {
           ) : (
             <>
               <div className="action">
-                <div className="profile" onClick={menuToggle}>
+                <div
+                  className="profile"
+                  onClick={menuToggle}
+                  onMouseEnter={menuToggle}
+                >
                   <img
                     src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
                     alt="Profile Avatar"
@@ -469,6 +514,7 @@ function Header(props) {
                 </div>
                 <div
                   className={`menu ${isMenuActive ? "active" : ""}`}
+                  onMouseLeave={menuToggle}
                   style={{
                     color: props.mode === "dark" ? "white" : "#204969",
                     backgroundColor:
@@ -535,6 +581,63 @@ function Header(props) {
         </div>
       </div>
       <div
+        className="navbar d-none d-md-flex ps-3 pe-3"
+        style={{ width: "100%", backgroundColor: "rgb(52, 58, 64)" }}
+      >
+        <div className="col-md-4" style={{ width: "100%" }}>
+          <div className="d-flex">
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/electronicItems">
+                {" "}
+                Electronics
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/fashion">
+                {" "}
+                Fashion
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/beauty">
+                {" "}
+                Beauty
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/homeandkitchen">
+                {" "}
+                Home & Kitchen
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/stationary">
+                {" "}
+                Stationary
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/furniture">
+                {" "}
+                Furniture
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/fresh">
+                {" "}
+                Fresh
+              </NavLink>
+            </div>
+            <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
+              <NavLink className="text-light" to="/grocery">
+                {" "}
+                Grocery
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         className="navbar d-flex d-md-none ps-3 pe-3"
         style={{ width: "100%" }}
       >
@@ -550,6 +653,8 @@ function Header(props) {
             <input
               autoComplete="off"
               type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               className="form-control rounded"
               placeholder="Search"
               style={{
@@ -564,6 +669,9 @@ function Header(props) {
               style={{
                 backgroundColor: "#0cc0df",
                 borderRadius: "0px",
+              }}
+              onClick={() => {
+                setVisible(true);
               }}
             >
               <i className="fas fa-search text-light" />
@@ -585,7 +693,7 @@ function Header(props) {
             <div className="disB">Home</div>
           </div>
         </NavLink>
-        <NavLink to="/categories" className="AppBar">
+        <NavLink to="/sellallcategories" className="AppBar">
           <div className="justify-content-center">
             <div className="logo">
               <BiCategory
@@ -622,6 +730,9 @@ function Header(props) {
           </div>
         </NavLink>
       </div>
+      <Modal onCancel={() => setVisible(false)} footer={null} open={visible}>
+        <SearchProduct queryCome={query} />
+      </Modal>
     </>
   );
 }

@@ -523,3 +523,183 @@ export const verifyOtpEmail = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+// all users
+export const getAllUsers = async (req, res) => {
+  try {
+    // Fetch all users excluding those with role value 1 (admin)
+    const users = await userModel.find({ role: { $ne: 1 } });
+
+    // Return a success response with the retrieved users
+    res.status(200).json({
+      success: true,
+      message: "All users retrieved successfully",
+      users,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error getting users",
+      error: error.message,
+    });
+  }
+};
+
+// all amdins
+export const getAllAdmins = async (req, res) => {
+  try {
+    // Fetch all users excluding those with role value 1 (admin)
+    const users = await userModel.find({ role: { $ne: 0 } });
+
+    // Return a success response with the retrieved users
+    res.status(200).json({
+      success: true,
+      message: "All admins retrieved successfully",
+      users,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error getting users",
+      error: error.message,
+    });
+  }
+};
+
+// remove from admin
+export const removeAdminRole = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Find the admin user by email and update the role to 0 (user)
+    const updatedUser = await userModel.findOneAndUpdate(
+      { email, role: 1 }, // Find admin by email and role 1 (admin)
+      { $set: { role: 0 } }, // Set the role to 0 (user)
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found or already updated",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Admin role updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error updating admin role",
+      error: error.message,
+    });
+  }
+};
+
+// make user admin
+export const giveAdminRole = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Find the admin user by email and update the role to 0 (user)
+    const updatedUser = await userModel.findOneAndUpdate(
+      { email, role: 0 }, // Find admin by email and role 1 (admin)
+      { $set: { role: 1 } }, // Set the role to 0 (user)
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found or already updated",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Admin role updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error updating admin role",
+      error: error.message,
+    });
+  }
+};
+
+// send message
+const sendMessage = async (name, email, message, sender, subject) => {
+  try {
+    let transporter = await nodeMailer.createTransport({
+      service: "gmail",
+      requireTLS: true,
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: email,
+      subject: subject,
+      html: `
+        <html>
+          <head>
+            
+          </head>
+          <body>
+            <div class="container">
+              <h2 class="title">Mail from ApkaBazzar</h2>
+              <h4>Hi, ${name}</h4>
+              <pre>${message}</pre>
+            </div>
+          </body>
+        </html>
+      `, // You can customize the email content here
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        throw new Error("Email not sent. Server error.");
+      } else {
+        console.log("Email sent: " + info.response);
+        return `${info.response} , check your email`;
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    throw new Error("Server Error");
+  }
+};
+
+export const sendMail = async (req, res) => {
+  try {
+    const { email } = req.body; // Assuming you are extracting the email from the request body
+    const message = req.body.message;
+    const { sender } = req.body.sender;
+    const { subject } = req.body.subject;
+    const existingUser = await userModel.findOne({ email });
+
+    const name = existingUser.first_name + " " + existingUser.last_name;
+    sendMessage(name, existingUser.email, message, sender, subject);
+
+    return res.status(200).json({
+      success: true,
+      message: "Message Sent Successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: "Server Error" });
+  }
+};

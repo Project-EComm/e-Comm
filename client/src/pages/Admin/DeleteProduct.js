@@ -155,7 +155,7 @@ const DeleteProduct = () => {
           </nav>
         </div>
         <div className="col">
-          <h1>DashBoard</h1>
+          <h1>Delete product</h1>
         </div>
       </div>
     </>

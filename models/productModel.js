@@ -31,6 +31,18 @@ const productSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    sales: {
+      type: Boolean,
+      default: false,
+    },
+    salePrice: {
+      type: Number,
+      default: 0,
+    },
+    brand: {
+      type: String,
+      default: "unknown",
+    },
     shipping: {
       type: Boolean,
     },

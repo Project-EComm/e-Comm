@@ -6,6 +6,13 @@ import {
   getSingleProductController,
   productPhotoController,
   updateProductController,
+  getLatestProductController,
+  getTopSaleProductsController,
+  getAllLatestProductController,
+  getSaleProductsController,
+  getProductsByCategoryController,
+  searchProductsController,
+  getRandomProductsController,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -32,13 +39,37 @@ router.put(
 //get products
 router.get("/get-product", getProductController);
 
+// top-4 new arivals
+router.get("/latest-products", getLatestProductController);
+
+//  all new arivals
+router.get("/allLatest-products", getAllLatestProductController);
+
+// top 4 hot on sales
+router.get("/top-4-products", getTopSaleProductsController);
+
+// all on sale products
+router.get("/sale-products", getSaleProductsController);
+
 //single product
 router.get("/get-product/:slug", getSingleProductController);
+
+// all product associated with certain category
+router.get(
+  "/products-by-category/:categorySlug",
+  getProductsByCategoryController
+);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
 
 //delete rproduct
-router.delete("/product/:pid", deleteProductController);
+router.delete("/productDelete/:pid", deleteProductController);
+
+// search product
+router.get("/search/:query", searchProductsController);
+
+// random product
+router.get("/random-product", getRandomProductsController);
 
 export default router;
