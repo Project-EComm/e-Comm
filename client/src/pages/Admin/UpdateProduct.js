@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast, Zoom } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
@@ -14,10 +14,10 @@ const UpdateProduct = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [shipping, setShipping] = useState("");
   const [id, setId] = useState("");
   const [photo, setPhoto] = useState("");
-  const [salePrice, setSalePrice] = useState("");
+  const [colour, setcolour] = useState("");
+  const [salePrice, setSalePrice] = useState(0);
   const [sales, setSales] = useState(false);
   const [brand, setBrand] = useState("");
 
@@ -29,12 +29,15 @@ const UpdateProduct = () => {
       );
       setName(data.product.name);
       setId(data.product._id);
+      setBrand(data.product.brand);
       setDescription(data.product.description);
       setPrice(data.product.price);
-      setSalePrice(data.product.salePrice);
+      setSalePrice(
+        data.product.salePrice === null ? 0 : data.product.salePrice
+      );
       setSales(data.product.sales);
+      setcolour(data.product.colour);
       setQuantity(data.product.quantity);
-      setShipping(data.product.shipping);
       setCategory(data.product.category._id);
     } catch (error) {
       console.log(error);
@@ -76,6 +79,7 @@ const UpdateProduct = () => {
       productData.append("category", category);
       productData.append("brand", brand);
       productData.append("sales", sales);
+      productData.append("colour", colour);
       productData.append("salePrice", salePrice);
       const { data } = axios.put(
         `http://localhost:8080/api/v1/product/update-product/${id}`,
@@ -98,7 +102,7 @@ const UpdateProduct = () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (answer === "") return;
-      const { data } = await axios.delete(
+      await axios.delete(
         `http://localhost:8080/api/v1/product//productDelete/${id}`
       );
       toast.success("Product Deleted Succfully");
@@ -126,7 +130,7 @@ const UpdateProduct = () => {
           <h1
             className="mt-2"
             style={{
-              color: "#204969",
+              colour: "#204969",
               textAlign: "center",
             }}
           >
@@ -218,6 +222,16 @@ const UpdateProduct = () => {
                 placeholder="Description"
                 className="form-controlCategory"
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-3">
+              <input
+                type="text"
+                value={colour}
+                placeholder="Colour"
+                className="form-controlCategory"
+                onChange={(e) => setcolour(e.target.value)}
               />
             </div>
 

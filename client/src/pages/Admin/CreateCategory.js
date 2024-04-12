@@ -204,13 +204,13 @@ const CreateCategory = () => {
               <div
                 className="card"
                 style={{
-                  border: "1px solid black`,",
+                  border: "1px solid black",
                 }}
               >
                 <div className="card-body card-bodyProfile">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
-                      src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                      src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                       alt="Admin"
                       className="rounded-circle"
                       width={80}
@@ -230,7 +230,6 @@ const CreateCategory = () => {
                     border: "1px solid black",
                   }}
                 >
-                  <NavLink to="/dashboard/admin">DashBoard</NavLink>
                   <NavLink to="/dashboard/users">Users</NavLink>
                   <NavLink to="/dashboard/admins">Admins</NavLink>
 
@@ -254,19 +253,13 @@ const CreateCategory = () => {
                         <input
                           type="text"
                           value={name}
-                          className="form-controlCategory d-none d-md-block"
-                          onChange={(e) => setName(e.target.value)}
-                        />
-                        <input
-                          type="text"
-                          value={name}
-                          className="form-controlCategory form-control d-sm-block d-md-none"
+                          className="form-controlCategory"
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
-                      <div className="col-sm-3 col-md-2 mt-2 mt-md-0 text-center">
+                      <div className="col-sm-3 col-md-4 mt-md-0 text-center">
                         <button
-                          className="btn btn-primary btn-jelly"
+                          className="btn btn-primary btn-jelly w-100"
                           type="submit"
                         >
                           Add

@@ -3,11 +3,17 @@ import axios from "axios";
 import { LuIndianRupee } from "react-icons/lu";
 import heart from "../pages/img/icon/heart.png";
 import compare from "../pages/img/icon/compare.png";
+import { NavLink } from "react-router-dom";
+import { useCart } from "../context/cart";
+import { useFav } from "../context/fav";
+import { toast, Zoom } from "react-toastify";
 
 const HomeandKitchen = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cart, setCart] = useCart();
+  const [fav, setFav] = useFav();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [sortByPrice, setSortByPrice] = useState(null);
@@ -200,9 +206,26 @@ const HomeandKitchen = () => {
                       <div className="product__item__text">
                         <h6 className="h6Home">{product.name}</h6>
                         <h6 className="h6Home">{product.brand}</h6>
-                        <a className="aHome add-cart" href="#!">
+                        <button
+                          className="aHome add-cart"
+                          href="#!"
+                          onClick={() => {
+                            setCart([...cart, product]);
+                            toast.success("Added to cart", {
+                              position: "bottom-right",
+                              autoClose: 3000,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                              theme: "light",
+                              transition: Zoom,
+                            });
+                          }}
+                        >
                           + Add To Cart
-                        </a>
+                        </button>
                         <div
                           className={`rating ${
                             product.quantity > 5 ? "d-none" : ""
@@ -235,29 +258,12 @@ const HomeandKitchen = () => {
                           ) : (
                             ""
                           )}
-                        </div>
-                        <div className="product__color__select">
-                          <label htmlFor="pc-22">
-                            <input
-                              className="inputHome"
-                              type="radio"
-                              id="pc-22"
-                            />
-                          </label>
-                          <label className="active black" htmlFor="pc-23">
-                            <input
-                              className="inputHome"
-                              type="radio"
-                              id="pc-23"
-                            />
-                          </label>
-                          <label className="grey" htmlFor="pc-24">
-                            <input
-                              className="inputHome"
-                              type="radio"
-                              id="pc-24"
-                            />
-                          </label>
+                          <NavLink
+                            to={`/detailPage/${product.slug}`}
+                            className="ms-auto text-dark"
+                          >
+                            View
+                          </NavLink>
                         </div>
                       </div>
                     </div>

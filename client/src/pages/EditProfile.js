@@ -5,16 +5,17 @@ import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 
 const EditProfile = (props) => {
-  const [fname, setfname] = useState("");
-  const [lname, setlname] = useState("");
-  const [pnumber, setpnumber] = useState("");
-  const [ccode] = useState("");
-  const [mail, setMail] = useState("");
-  const [pinc, setpinc] = useState("");
-  const [cityName, setcityName] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
-  const [add, setAdd] = useState("");
   const [auth, setAuth] = useAuth();
+  const [fname, setfname] = useState(auth?.user?.first_name);
+  const [lname, setlname] = useState(auth?.user?.last_name);
+  const [pnumber, setpnumber] = useState(auth?.user?.phoneNumber);
+  const [ccode] = useState(auth?.user?.countrycode);
+  const [mail, setMail] = useState(auth?.user?.email);
+  const [pinc, setpinc] = useState(auth?.user?.pincode);
+  const [cityName, setcityName] = useState(auth?.user?.city);
+  const [isEditing, setIsEditing] = useState(false);
+  const [add, setAdd] = useState(auth?.user?.address);
+
   const navigate = useNavigate();
 
   const storedUser = auth ? auth.user : null;
@@ -88,7 +89,7 @@ const EditProfile = (props) => {
         );
 
         // Display success toast message
-        navigate("/profile");
+        navigate("/dashboard/profile");
         toast.success(res.data.message, {
           position: "top-right",
           autoClose: 3000,
@@ -153,7 +154,7 @@ const EditProfile = (props) => {
               <div className="card-body card-bodyProfile">
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
-                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                    src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                     alt="Admin"
                     className="rounded-circle"
                     width={150}
@@ -206,6 +207,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={fname}
                           onChange={(e) => setfname(e.target.value)}
                         />
@@ -225,6 +227,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={lname}
                           onChange={(e) => setlname(e.target.value)}
                         />
@@ -245,6 +248,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={mail}
                           onChange={(e) => setMail(e.target.value)}
                         />
@@ -263,6 +267,7 @@ const EditProfile = (props) => {
                         <div>
                           <input
                             type="text"
+                            className="form-controlCategory"
                             value={pnumber}
                             onChange={(e) => setpnumber(e.target.value)}
                           />
@@ -286,6 +291,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={add}
                           onChange={(e) => setAdd(e.target.value)}
                         />
@@ -303,6 +309,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={pinc}
                           onChange={(e) => setpinc(e.target.value)}
                         />
@@ -320,6 +327,7 @@ const EditProfile = (props) => {
                       {isEditing ? (
                         <input
                           type="text"
+                          className="form-controlCategory"
                           value={cityName}
                           onChange={(e) => setcityName(e.target.value)}
                         />

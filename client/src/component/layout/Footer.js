@@ -132,7 +132,7 @@ const Footer = (props) => {
                 <li className="mb-3">
                   <span>
                     <Link
-                      to="/"
+                      to="/electronicItems"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
@@ -145,7 +145,7 @@ const Footer = (props) => {
                 <li className="mb-3">
                   <span>
                     <Link
-                      to=""
+                      to="/fashion"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
@@ -158,7 +158,7 @@ const Footer = (props) => {
                 <li className="mb-3">
                   <span>
                     <Link
-                      to=""
+                      to="/beauty"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
@@ -171,7 +171,7 @@ const Footer = (props) => {
                 <li className="mb-3">
                   <span>
                     <Link
-                      to=""
+                      to="/homeandkitchen"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
@@ -184,20 +184,20 @@ const Footer = (props) => {
                 <li className="mb-3">
                   <span>
                     <Link
-                      to=""
+                      to="/fresh"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
                       }}
                     >
-                      Fresh
+                      Sports
                     </Link>
                   </span>
                 </li>
                 <li className="mb-3 ">
                   <span>
                     <Link
-                      to="/"
+                      to="/grocery"
                       style={{
                         textDecoration: "none",
                         color: props.mode === "dark" ? "white" : "#0B1423",
@@ -244,9 +244,9 @@ const Footer = (props) => {
       >
         <div className="compybase">
           © 2024 Copyright:{" "}
-          <a href="/" style={{ textDecoration: "none" }}>
+          <NavLink to="/" style={{ textDecoration: "none" }}>
             apkaBazzar
-          </a>
+          </NavLink>
         </div>
         <div className="linkbase">
           <Link

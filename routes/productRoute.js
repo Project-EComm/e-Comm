@@ -13,6 +13,9 @@ import {
   getProductsByCategoryController,
   searchProductsController,
   getRandomProductsController,
+  getGroceryFour,
+  getSimilarFour,
+  getProductsFromMultipleCategoriesController,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -71,5 +74,17 @@ router.get("/search/:query", searchProductsController);
 
 // random product
 router.get("/random-product", getRandomProductsController);
+
+// routes
+router.get("/grocery-four/:categorySlug", getGroceryFour);
+
+// routes
+router.get("/similar-four/:categorySlug", getSimilarFour);
+
+// get item from multiple categories
+router.get(
+  "/multiple-categories/:categorySlugs",
+  getProductsFromMultipleCategoriesController
+);
 
 export default router;

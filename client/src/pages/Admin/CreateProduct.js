@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast, Zoom } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { Select } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -13,8 +13,8 @@ const CreateProduct = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
+  const [colour, setcolour] = useState("");
   const [brand, setBrand] = useState("");
   const [sales, setSales] = useState(false);
   const [salePrice, setSalePrice] = useState("");
@@ -48,6 +48,7 @@ const CreateProduct = () => {
       productData.append("price", price);
       productData.append("quantity", quantity);
       productData.append("photo", photo);
+      productData.append("colour", colour);
       productData.append("category", category);
       productData.append("brand", brand);
       productData.append("sales", sales);
@@ -86,7 +87,7 @@ const CreateProduct = () => {
           <h1
             className="text-center mt-2"
             style={{
-              color: "#204969",
+              colour: "#204969",
             }}
           >
             Create Product
@@ -99,18 +100,19 @@ const CreateProduct = () => {
             }}
           >
             <Select
-              bordered={false}
               placeholder="Select a Category"
               size="large"
-              showSearch
+              showSearch={true}
               className="mb-3"
               onChange={(value) => {
                 setCategory(value);
               }}
               style={{
-                border: "1px solid #b7b7b7",
-                borderRadius: "4px",
+                border: "0px",
               }}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
             >
               {categories?.map((c) => (
                 <Option key={c._id} value={c._id}>
@@ -169,6 +171,15 @@ const CreateProduct = () => {
                 placeholder="Description"
                 className="form-controlCategory"
                 onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                value={colour}
+                placeholder="Colour"
+                onChange={(e) => setcolour(e.target.value)}
+                className="form-controlCategory"
               />
             </div>
 

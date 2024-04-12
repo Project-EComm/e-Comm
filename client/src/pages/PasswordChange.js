@@ -112,7 +112,7 @@ const PasswordChange = (props) => {
                 <div className="card-body card-bodyProfile">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
-                      src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                      src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                       alt="Admin"
                       className="rounded-circle"
                       width={150}

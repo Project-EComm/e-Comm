@@ -8,13 +8,19 @@ import { AuthProvider } from "./context/auth.js";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "antd/dist/reset.css";
+import { CartProvider } from "./context/cart.js";
+import { FavProvider } from "./context/fav.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CartProvider>
+      <FavProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </FavProvider>
+    </CartProvider>
   </AuthProvider>
 );
 

@@ -1,273 +1,236 @@
 import React from "react";
-import profile from "./img/author.jpg";
+import { LuInstagram, LuLinkedin } from "react-icons/lu";
+import { FaXTwitter } from "react-icons/fa6";
+
+import { LuFacebook } from "react-icons/lu";
+import { NavLink } from "react-router-dom";
+import { useCart } from "../context/cart";
+import { useFav } from "../context/fav";
+import { toast, Zoom } from "react-toastify";
 const AboutUs = () => {
   return (
     <>
       <div>
-        {/* About Section Begin */}
-        <section className="about spad">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="about__pic">
+        <section className="w3l-banner-slider-main inner-pagehny">
+          <div className="breadcrumb-infhny">
+            <div className="top-header-content">
+              <div className="breadcrumb-contentnhy">
+                <div className="container">
+                  <nav aria-label="breadcrumb">
+                    <h2 className="hny-title text-center">About Us</h2>
+                    <ol className="breadcrumb mb-0">
+                      <li>
+                        <NavLink href="/">Home</NavLink>
+                        <span className="fa fa-angle-double-right" />
+                      </li>
+                      <li className="active">About</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="w3l-wecome-content-6">
+          {/* /content-6-section */}
+          <div className="ab-content-6-mian py-5">
+            <div className="container py-lg-5">
+              <div className="welcome-grids row">
+                <div className="col-lg-6 mb-lg-0 mb-5">
+                  <h3 className="hny-title">
+                    About Our apka<span>Bazzar</span>
+                  </h3>
+                  <p className="my-4">
+                    Discover seamless grocery shopping at ApkaBazzar – where
+                    online convenience meets in-store authenticity. We offer a
+                    diverse range of high-quality products at competitive
+                    prices, enhancing well-being.
+                  </p>
+                  <p className="mb-4">
+                    Our mission is to redefine grocery shopping with fresh,
+                    wholesome, and ethically sourced products. Join us in
+                    transforming your grocery experience – where quality meets
+                    convenience, and community thrives.
+                  </p>
+                  <div className="read">
+                    <NavLink to="/" className="read-more btn">
+                      Shop Now
+                    </NavLink>
+                  </div>
+                </div>
+                <div className="col-lg-6 welcome-image">
                   <img
-                    src="https://miro.medium.com/v2/resize:fit:1018/1*kmpOMGvCUei7bsPnaxEYOA.png"
-                    alt="OK"
+                    src="https://img.freepik.com/free-photo/3d-illustration-smartphone-with-store-screen-with-gift-boxes-side_58466-14580.jpg?w=900"
+                    className="img-fluid"
+                    alt="a"
                   />
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-4 col-md-4 col-sm-6">
-                <div className="about__item">
-                  <h4>Who We Are ?</h4>
-                  <p>
-                    Contextual advertising programs sometimes have strict
-                    policies that need to be adhered too. Let’s take Google as
-                    an example.
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-6">
-                <div className="about__item">
-                  <h4>Who We Do ?</h4>
-                  <p>
-                    In this digital generation where information can be easily
-                    obtained within seconds, business cards still have retained
-                    their importance.
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-6">
-                <div className="about__item">
-                  <h4>Why Choose Us</h4>
-                  <p>
-                    A two or three storey house is the ideal way to maximise the
-                    piece of earth on which our home sits, but for older or
-                    infirm people.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* About Section End */}
-        {/* Testimonial Section Begin */}
-        <section className="testimonial">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col">
-                <div className="col-lg-6 p-0">
-                  <div className="testimonial__text">
-                    <span className="icon_quotations" />
+        {/* //content-6-section */}
+        <section className="features-4">
+          <div className="features4-block py-5">
+            <div className="container py-lg-5">
+              <h6>We are the best</h6>
+              <h3 className="hny-title text-center">
+                What We <span>Offering</span>
+              </h3>
+              <div className="features4-grids text-center row mt-5">
+                <div className="col-lg-3 col-md-6 features4-grid">
+                  <div className="features4-grid-inn">
+                    <span
+                      className="fa fa-bullhorn icon-fea4"
+                      aria-hidden="true"
+                    />
+                    <h5>
+                      <a href="#!">Call Us Anytime</a>
+                    </h5>
                     <p>
-                      “Going out after work? Take your butane curling iron with
-                      you to the office, heat it up, style your hair before you
-                      leave the office and you won’t have to make a trip back
-                      home.”
+                      Offering customer support around the clock. We're here for
+                      you, whenever you need us.
                     </p>
-                    <div className="testimonial__author">
-                      <div className="testimonial__author__pic">
-                        <img src={profile} alt />
-                      </div>
-                      <div className="testimonial__author__text">
-                        <h5>Augusta Schultz</h5>
-                        <p>Fashion Design</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
-                <div className="col-lg-6 p-0">
-                  <div
-                    className="testimonial__pic set-bg"
-                    data-setbg="img/about/testimonial-pic.jpg"
-                  />
-                </div>
-              </div>
-              <div className="col">
-                <div className="col-lg-6 p-0">
-                  <div className="testimonial__text">
-                    <span className="icon_quotations" />
+                <div className="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+                  <div className="features4-grid-inn">
+                    <span
+                      className="fa fa-truck icon-fea4"
+                      aria-hidden="true"
+                    />
+                    <h5>
+                      <a href="#!">Free Shipping</a>
+                    </h5>
                     <p>
-                      “Going out after work? Take your butane curling iron with
-                      you to the office, heat it up, style your hair before you
-                      leave the office and you won’t have to make a trip back
-                      home.”
+                      Enjoy the convenience of free shipping on all orders. It's
+                      our way of saying thank you.
                     </p>
-                    <div className="testimonial__author">
-                      <div className="testimonial__author__pic">
-                        <img src={profile} alt />
-                      </div>
-                      <div className="testimonial__author__text">
-                        <h5>Augusta Schultz</h5>
-                        <p>Fashion Design</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
-                <div className="col-lg-6 p-0">
-                  <div
-                    className="testimonial__pic set-bg"
-                    data-setbg="img/about/testimonial-pic.jpg"
-                  />
+                <div className="col-lg-3 col-md-6 features4-grid">
+                  <div className="features4-grid-inn">
+                    <span
+                      className="fa fa-recycle icon-fea4"
+                      aria-hidden="true"
+                    />
+                    <h5>
+                      <a href="#!">Free Returns</a>
+                    </h5>
+                    <p>
+                      Shop worry-free with our hassle-free return policy. Your
+                      satisfaction is our priority.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-6 features4-grid">
+                  <div className="features4-grid-inn">
+                    <span
+                      className="fa fa-money icon-fea4"
+                      aria-hidden="true"
+                    />
+                    <h5>
+                      <a href="#!">Secured Payments</a>
+                    </h5>
+                    <p>
+                      Rest easy knowing your payments are secured. Your safety
+                      is paramount to us.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* Testimonial Section End */}
-        {/* Counter Section Begin */}
-        <section className="counter spad">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="counter__item">
-                  <div className="counter__item__number">
-                    <h2 className="cn_num">102</h2>
+
+        {/* features-4 */}
+        {/*/team-sec*/}
+        <section className="w3l-team-main">
+          <div className="team py-5">
+            <div className="container py-lg-5">
+              <h3 className="hny-title text-center">
+                Meet the <span>Team</span>
+              </h3>
+              <div className="row team-row justify-content-center mt-5">
+                <div className="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative d-flex justify-content-center">
+                  <div className="team_info mt-3 position-relative text-center">
+                    <img
+                      src="https://t3.ftcdn.net/jpg/05/90/59/88/360_F_590598870_TOcGd4cUZzPoEMlxSc7XYwcupHOE0vLM.jpg"
+                      alt="ds"
+                    />
+                    <h3>
+                      <a href="#!" className="team_name">
+                        Syed Raiyanullah
+                      </a>
+                    </h3>
+                    <ul className="team-social mt-3">
+                      <li>
+                        <a href="#!">
+                          <LuFacebook />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <FaXTwitter />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <LuInstagram />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <LuLinkedin />
+                        </a>
+                      </li>
+                    </ul>
                   </div>
-                  <span>
-                    Our <br />
-                    Clients
-                  </span>
                 </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="counter__item">
-                  <div className="counter__item__number">
-                    <h2 className="cn_num">30</h2>
+                {/* end team member */}
+                <div className="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative d-flex justify-content-center">
+                  <div className="team_info mt-3 position-relative text-center">
+                    <img
+                      src="https://t3.ftcdn.net/jpg/06/83/27/18/240_F_683271859_IwxKLXDNbLxUhrFjkvjeqI0ezceQuNXW.jpg"
+                      alt="a"
+                      height="330px"
+                    />
+                    <h3>
+                      <a href="#!" className="team_name">
+                        Abhishik Rana
+                      </a>
+                    </h3>
+                    <ul className="team-social mt-3">
+                      <li>
+                        <a href="#!">
+                          <LuFacebook />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <FaXTwitter />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <LuInstagram />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#!">
+                          <LuLinkedin />
+                        </a>
+                      </li>
+                    </ul>
                   </div>
-                  <span>
-                    Total <br />
-                    Categories
-                  </span>
                 </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="counter__item">
-                  <div className="counter__item__number">
-                    <h2 className="cn_num">102</h2>
-                  </div>
-                  <span>
-                    In <br />
-                    Country
-                  </span>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="counter__item">
-                  <div className="counter__item__number">
-                    <h2 className="cn_num">98</h2>
-                    <strong>%</strong>
-                  </div>
-                  <span>
-                    Happy <br />
-                    Customer
-                  </span>
-                </div>
+                {/* end team member */}
               </div>
             </div>
           </div>
         </section>
-        {/* Counter Section End */}
-        {/* Team Section Begin */}
-        <section className="team spad">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="section-title">
-                  <span>Our Team</span>
-                  <h2>Meet Our Team</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="team__item">
-                  <img src="img/about/team-1.jpg" alt />
-                  <h4>John Smith</h4>
-                  <span>Fashion Design</span>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="team__item">
-                  <img src="img/about/team-2.jpg" alt />
-                  <h4>Christine Wise</h4>
-                  <span>C.E.O</span>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="team__item">
-                  <img src="img/about/team-3.jpg" alt />
-                  <h4>Sean Robbins</h4>
-                  <span>Manager</span>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-6 col-sm-6">
-                <div className="team__item">
-                  <img src="img/about/team-4.jpg" alt />
-                  <h4>Lucy Myers</h4>
-                  <span>Delivery</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Team Section End */}
-        {/* Client Section Begin */}
-        <section className="clients spad">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="section-title">
-                  <span>Partner</span>
-                  <h2>Happy Clients</h2>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-1.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-2.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-3.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-4.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-5.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-6.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-7.png" alt />
-                </a>
-              </div>
-              <div className="col-lg-3 col-md-4 col-sm-4 col-6">
-                <a href="#" className="client__item">
-                  <img src="img/clients/client-8.png" alt />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        {/*//team-sec*/}
       </div>
     </>
   );

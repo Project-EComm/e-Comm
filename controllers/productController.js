@@ -14,6 +14,7 @@ export const createProductController = async (req, res) => {
       shipping,
       brand,
       sales,
+      colour,
       salePrice,
     } = req.fields;
     const { photo } = req.files;
@@ -200,6 +201,7 @@ export const updateProductController = async (req, res) => {
       shipping,
       sales,
       salePrice,
+      colour,
       brand,
     } = req.fields;
     const { photo } = req.files;
@@ -409,6 +411,133 @@ export const getRandomProductsController = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error in getting random products",
+      error: error.message,
+    });
+  }
+};
+
+// category4Products
+
+export const getGroceryFour = async (req, res) => {
+  try {
+    // Get the category slug from the request parameters
+    const { categorySlug } = req.params;
+
+    // Find the category based on the slug
+    const category = await categoryModel.findOne({ slug: categorySlug });
+
+    if (!category) {
+      return res.status(404).json({
+        success: false,
+        message: "Category not found",
+      });
+    }
+
+    // Find products associated with the category
+    const products = await productModel
+      .find({ category: category._id })
+      .select("-photo") // Exclude the 'photo' field for simplicity
+      .sort({ createdAt: -1 }) // Sort by descending order of creation date (latest first)
+      .limit(4);
+    res.status(200).json({
+      success: true,
+      countTotal: products.length,
+      message: `All Products in the ${category.name} category`,
+      products,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error in getting products by category",
+      error: error.message,
+    });
+  }
+};
+
+// getSimilarFour
+
+export const getSimilarFour = async (req, res) => {
+  try {
+    // Get the category slug from the request parameters
+    const { categorySlug } = req.params;
+
+    // Find the category based on the slug
+    const category = await categoryModel.findOne({ slug: categorySlug });
+
+    if (!category) {
+      return res.status(404).json({
+        success: false,
+        message: "Category not found",
+      });
+    }
+
+    // Find products associated with the category
+    const products = await productModel
+      .find({ category: category._id })
+      .select("-photo") // Exclude the 'photo' field for simplicity
+      .sort({ createdAt: -1 }) // Sort by descending order of creation date (latest first)
+      .limit(4);
+    res.status(200).json({
+      success: true,
+      countTotal: products.length,
+      message: `All Products in the ${category.name} category`,
+      products,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error in getting products by category",
+      error: error.message,
+    });
+  }
+};
+
+// Import necessary models and libraries
+
+// Controller to get products from multiple categories
+export const getProductsFromMultipleCategoriesController = async (req, res) => {
+  try {
+    // Extract category slugs from the request parameters
+    const { categorySlugs } = req.params;
+
+    // Convert comma-separated category slugs string to an array
+    const categorySlugArray = categorySlugs.split("_");
+
+    // Find categories based on the provided slugs
+    const categories = await categoryModel.find({
+      slug: { $in: categorySlugArray },
+    });
+
+    // Initialize an empty array to store products from all categories
+    let allProducts = [];
+
+    // Iterate through each category and find associated products
+    for (const category of categories) {
+      // Find products associated with the current category
+      const products = await productModel.aggregate([
+        { $match: { category: category._id } }, // Match products belonging to the current category
+        { $sample: { size: 6 } }, // Select 6 random documents
+        { $project: { photo: 0 } }, // Exclude the 'photo' field for simplicity
+      ]);
+
+      // Push products of the current category into the array
+      allProducts = allProducts.concat(products);
+    }
+
+    // Send the merged array of products as the response
+    res.status(200).json({
+      success: true,
+      countTotal: allProducts.length,
+      message: `Products from Categories: ${categorySlugArray.join(", ")}`,
+      products: allProducts,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error in getting products from multiple categories",
       error: error.message,
     });
   }

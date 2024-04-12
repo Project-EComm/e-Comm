@@ -6,6 +6,9 @@ import logo from "../../component/layout/apkaBazzar.png";
 import { RiAdminFill } from "react-icons/ri";
 import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../context/cart";
+import { useFav } from "../context/fav";
+import { toast, Zoom } from "react-toastify";
 
 const DeleteProduct = () => {
   const [isOpen, setisOpen] = useState(true);

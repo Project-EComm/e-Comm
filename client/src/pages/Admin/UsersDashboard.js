@@ -8,16 +8,24 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { MdAdd } from "react-icons/md";
 
 import Messages from "./Messages";
+
 const UsersDashboard = () => {
   const [auth] = useAuth();
   const [users, setUsers] = useState([]);
   const [visible, setVisible] = useState(false);
   const [sendMail, setSendMail] = useState(null);
-  var mail = "";
+  const [searchQuery, setSearchQuery] = useState("");
 
-  console.log(mail);
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-  const handleAddAdmin = async () => {
+  const filteredUsers = users.filter((user) => {
+    const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
+    return fullName.includes(searchQuery.toLowerCase());
+  });
+
+  const handleAddAdmin = async (mail) => {
     try {
       console.log("Mail before removing admin:", mail);
 
@@ -38,7 +46,7 @@ const UsersDashboard = () => {
     }
   };
 
-  const confirmBox = () => {
+  const confirmBox = (mail) => {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
@@ -57,8 +65,7 @@ const UsersDashboard = () => {
             <button
               className="custom-uiButton"
               onClick={() => {
-                handleAddAdmin();
-                console.log("Mail before removing admin:", mail);
+                handleAddAdmin(mail);
                 onClose();
               }}
             >
@@ -86,7 +93,7 @@ const UsersDashboard = () => {
     };
 
     fetchUsers();
-  }, []); // Empty dependency array to ensure the effect runs only once on component mount
+  }, []);
 
   return (
     <>
@@ -98,13 +105,13 @@ const UsersDashboard = () => {
               <div
                 className="card"
                 style={{
-                  border: "1px solid black`,",
+                  border: "1px solid black",
                 }}
               >
                 <div className="card-body card-bodyProfile">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
-                      src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                      src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                       alt="Admin"
                       className="rounded-circle"
                       width={80}
@@ -124,7 +131,6 @@ const UsersDashboard = () => {
                     border: "1px solid black",
                   }}
                 >
-                  <NavLink to="/dashboard/admin">DashBoard</NavLink>
                   <NavLink to="/dashboard/users">Users</NavLink>
                   <NavLink to="/dashboard/admins">Admins</NavLink>
                   <NavLink to="/dashboard/product">Product</NavLink>
@@ -143,6 +149,17 @@ const UsersDashboard = () => {
                   <p className="card-heading">Users</p>
                   <hr />
                   <div className="row">
+                    <div className="col-sm-12">
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-controlCategory"
+                          placeholder="Search users"
+                          value={searchQuery}
+                          onChange={handleSearchInputChange}
+                        />
+                      </div>
+                    </div>
                     <div className="col-sm-12">
                       <div className="table-responsive shadow-z-1">
                         <table
@@ -163,43 +180,24 @@ const UsersDashboard = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {users.map((user) => (
+                            {filteredUsers.map((user, index) => (
                               <tr key={user._id}>
-                                <td data-title="ID">
-                                  {users.indexOf(user) + 1}
-                                </td>
-                                <td
-                                  data-title="First Name"
-                                  className="nameColumn"
-                                >
+                                <td data-title="ID">{index + 1}</td>
+                                <td data-title="First Name">
                                   {user.first_name}
                                 </td>
-                                <td
-                                  data-title="Last Name"
-                                  className="nameColumn"
-                                >
-                                  {user.last_name}
-                                </td>
-                                <td data-title="Email" className="nameColumn">
-                                  {user.email}
-                                </td>
-                                <td
-                                  data-title="Phone Number"
-                                  className="nameColumn"
-                                >
+                                <td data-title="Last Name">{user.last_name}</td>
+                                <td data-title="Email">{user.email}</td>
+                                <td data-title="Phone Number">
                                   {user.countrycode} - {user.phoneNumber}
                                 </td>
-                                <td data-title="Address" className="nameColumn">
+                                <td data-title="Address">
                                   {user.address}, {user.pincode}, {user.city}
                                 </td>
-
-                                <td
-                                  data-title="isVerified"
-                                  className="nameColumn"
-                                >
+                                <td data-title="isVerified">
                                   {user.verifiedEmail === true ? "Yes" : "No"}
                                 </td>
-                                <td data-title="action" className="nameColumn">
+                                <td data-title="action">
                                   <button
                                     onClick={() => {
                                       setVisible(true);
@@ -210,13 +208,10 @@ const UsersDashboard = () => {
                                     <i className="fa fa-envelope" />
                                   </button>
                                 </td>
-                                <td data-title="action" className="nameColumn">
+                                <td data-title="action">
                                   <button
                                     className="btn btn-primary"
-                                    onClick={() => {
-                                      mail = user.email;
-                                      confirmBox();
-                                    }}
+                                    onClick={() => confirmBox(user.email)}
                                   >
                                     <MdAdd
                                       style={{

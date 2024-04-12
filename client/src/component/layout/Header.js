@@ -20,13 +20,16 @@ import { IoIosMenu } from "react-icons/io";
 import { IoIosHome } from "react-icons/io";
 import { BiCategory } from "react-icons/bi";
 import { CiHeart } from "react-icons/ci";
-import { IoMdTrendingUp } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
 import { Modal } from "antd";
 import SearchProduct from "./../../pages/SearchProduct.js";
+import { useCart } from "../../context/cart.js";
+import { useFav } from "../../context/fav.js";
 
 function Header(props) {
   const [auth, setauth] = useAuth();
+  const [cart, setCart] = useCart();
+  const [fav, setFav] = useFav();
   const [isMenuActive, setMenuActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [ip, setIp] = useState();
@@ -205,7 +208,7 @@ function Header(props) {
                 </NavLink>
               </li>
               <li className="listNavLinks" data-bs-dismiss="offcanvas">
-                <NavLink className="text-dark" to="/sellallcategories">
+                <NavLink className="text-dark" to="/categories">
                   Sell All Categories
                 </NavLink>
               </li>
@@ -359,7 +362,7 @@ function Header(props) {
                   onMouseEnter={menuToggle}
                 >
                   <img
-                    src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                    src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                     alt="Profile Avatar"
                   />{" "}
                 </div>
@@ -446,7 +449,7 @@ function Header(props) {
                     {auth?.user?.role === 1 ? (
                       <li>
                         <NavLink
-                          to="/dashboard/admin"
+                          to="/dashboard/users"
                           style={{
                             color: props.mode === "dark" ? "white" : "#204969",
                           }}
@@ -551,7 +554,7 @@ function Header(props) {
         </div>
         <div className="d-flex d-none d-md-flex">
           {/* Cart */}
-          <NavLink className="text-reset me-3" to="#!">
+          <NavLink className="text-reset me-3" to="/cart">
             <span>
               <i
                 className="fas fa-shopping-cart"
@@ -561,11 +564,11 @@ function Header(props) {
               />
             </span>
             <span className="badge rounded-pill badge-notification bg-danger">
-              1
+              {cart?.length}
             </span>
           </NavLink>
           {/* Fav */}
-          <NavLink className="text-reset me-3" to="#!">
+          <NavLink className="text-reset me-3" to="/fav">
             <span>
               <i
                 className="fas fa-heart"
@@ -575,7 +578,7 @@ function Header(props) {
               />
             </span>
             <span className="badge rounded-pill badge-notification bg-danger">
-              1
+              {fav?.length}
             </span>
           </NavLink>
         </div>
@@ -625,7 +628,7 @@ function Header(props) {
             <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
               <NavLink className="text-light" to="/fresh">
                 {" "}
-                Fresh
+                Sports
               </NavLink>
             </div>
             <div className="ms-5 categoryLinks" style={{ fontSize: "12px" }}>
@@ -693,7 +696,7 @@ function Header(props) {
             <div className="disB">Home</div>
           </div>
         </NavLink>
-        <NavLink to="/sellallcategories" className="AppBar">
+        <NavLink to="/categories" className="AppBar">
           <div className="justify-content-center">
             <div className="logo">
               <BiCategory
@@ -705,7 +708,7 @@ function Header(props) {
             <div className="disB">Categories</div>
           </div>
         </NavLink>
-        <NavLink to="/wish" className="AppBar">
+        <NavLink to="/fav" className="AppBar">
           <div className="justify-content-center">
             <div className="logo">
               <CiHeart

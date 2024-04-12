@@ -7,7 +7,7 @@ const Messages = ({ mail }) => {
   const [auth] = useAuth();
   const [message, setMessage] = useState("");
   const [subject, setSubject] = useState("");
-  const [response, setResponse] = useState(null);
+  const [setResponse] = useState(null);
   const formRef = useRef(null);
 
   const handleSubmit = async (e) => {

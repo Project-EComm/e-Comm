@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-// import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";import { useCart } from "../context/cart";import { useFav } from "../context/fav";import { toast, Zoom } from "react-toastify";
 import { LuIndianRupee } from "react-icons/lu";
 import axios from "axios";
 import {
@@ -8,6 +8,9 @@ import {
   IoMdStar,
 } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../context/cart";
+import { useFav } from "../context/fav";
+import { toast, Zoom } from "react-toastify";
 // import { FaHeart } from "react-icons/fa";
 import heart from "./img/icon/heart.png";
 import compare from "./img/icon/compare.png";
@@ -23,6 +26,8 @@ const HomePage = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeFilter, setActiveFilter] = useState("*");
   const [OpenCollection, setOpenCollection] = useState("");
+  const [cart, setCart] = useCart();
+  const [fav, setFav] = useFav();
   const [countdown, setCountdown] = useState({
     days: 3,
     hours: 1,
@@ -34,6 +39,24 @@ const HomePage = (props) => {
   const [mostSaleProducts, setMostSaleProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [grocery, setGrocery] = useState([]);
+
+  useEffect(() => {
+    const fetchProductsByCategory = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/api/v1/product/grocery-four/grocery"
+        );
+        setGrocery(response.data.products);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchProductsByCategory();
+  }, []);
 
   useEffect(() => {
     const fetchTopSaleProducts = async () => {
@@ -400,7 +423,24 @@ const HomePage = (props) => {
                       <span className="label">Sale</span>
                       <ul className="product__hover ulHome">
                         <li>
-                          <a className="aHome" href="#!">
+                          <a
+                            className="aHome"
+                            href="#!"
+                            onClick={() => {
+                              setFav([...fav, product]);
+                              toast.success("Added to Favorite", {
+                                position: "bottom-right",
+                                autoClose: 3000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                                transition: Zoom,
+                              });
+                            }}
+                          >
                             <img className="imgHome" src={heart} alt="OK" />{" "}
                             <span>Favorite</span>
                           </a>
@@ -418,9 +458,26 @@ const HomePage = (props) => {
                         <h6 className="h6Home">{product.name}</h6>
                         <h6 className="h6Home ms-auto">{product.brand}</h6>
                       </div>
-                      <a className="aHome add-cart" href="#!">
+                      <button
+                        className="aHome add-cart"
+                        href="#!"
+                        onClick={() => {
+                          setCart([...cart, product]);
+                          toast.success("Added to cart", {
+                            position: "bottom-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Zoom,
+                          });
+                        }}
+                      >
                         + Add To Cart
-                      </a>
+                      </button>
                       <p
                         className={`pHome ${
                           product.quantity > 5 ? "d-none" : ""
@@ -451,17 +508,6 @@ const HomePage = (props) => {
                         ) : (
                           ""
                         )}
-                      </div>
-                      <div className="product__color__select">
-                        <label htmlFor="pc-7">
-                          <input className="inputHome" type="radio" id="pc-7" />
-                        </label>
-                        <label className="active black" htmlFor="pc-8">
-                          <input className="inputHome" type="radio" id="pc-8" />
-                        </label>
-                        <label className="grey" htmlFor="pc-9">
-                          <input className="inputHome" type="radio" id="pc-9" />
-                        </label>
                       </div>
                     </div>
                   </div>
@@ -493,7 +539,24 @@ const HomePage = (props) => {
                       </span>
                       <ul className="product__hover ulHome">
                         <li>
-                          <a className="aHome" href="#!">
+                          <a
+                            className="aHome"
+                            href="#!"
+                            onClick={() => {
+                              setFav([...fav, product]);
+                              toast.success("Added to Favorite", {
+                                position: "bottom-right",
+                                autoClose: 3000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                                transition: Zoom,
+                              });
+                            }}
+                          >
                             <img className="imgHome" src={heart} alt="OK" />{" "}
                             <span>Favorite</span>
                           </a>
@@ -511,7 +574,24 @@ const HomePage = (props) => {
                         <h6 className="h6Home">{product.name}</h6>
                         <h6 className="h6Home ms-auto">{product.brand}</h6>
                       </div>
-                      <a className="aHome add-cart" href="#!">
+                      <a
+                        className="aHome add-cart"
+                        href="#!"
+                        onClick={() => {
+                          setCart([...cart, product]);
+                          toast.success("Added to cart", {
+                            position: "bottom-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Zoom,
+                          });
+                        }}
+                      >
                         + Add To Cart
                       </a>
                       <p
@@ -545,17 +625,6 @@ const HomePage = (props) => {
                           ""
                         )}
                       </div>
-                      <div className="product__color__select">
-                        <label htmlFor="pc-7">
-                          <input className="inputHome" type="radio" id="pc-7" />
-                        </label>
-                        <label className="active black" htmlFor="pc-8">
-                          <input className="inputHome" type="radio" id="pc-8" />
-                        </label>
-                        <label className="grey" htmlFor="pc-9">
-                          <input className="inputHome" type="radio" id="pc-9" />
-                        </label>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -584,7 +653,24 @@ const HomePage = (props) => {
                       <span className="label">Sale</span>
                       <ul className="product__hover ulHome">
                         <li>
-                          <a className="aHome" href="#!">
+                          <a
+                            className="aHome"
+                            href="#!"
+                            onClick={() => {
+                              setFav([...fav, product]);
+                              toast.success("Added to Favorite", {
+                                position: "bottom-right",
+                                autoClose: 3000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                                transition: Zoom,
+                              });
+                            }}
+                          >
                             <img className="imgHome" src={heart} alt="OK" />{" "}
                             <span>Favorite</span>
                           </a>
@@ -602,7 +688,24 @@ const HomePage = (props) => {
                         <h6 className="h6Home">{product.name}</h6>
                         <h6 className="h6Home ms-auto">{product.brand}</h6>
                       </div>
-                      <a className="aHome add-cart" href="#!">
+                      <a
+                        className="aHome add-cart"
+                        href="#!"
+                        onClick={() => {
+                          setCart([...cart, product]);
+                          toast.success("Added to cart", {
+                            position: "bottom-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            transition: Zoom,
+                          });
+                        }}
+                      >
                         + Add To Cart
                       </a>
                       <p
@@ -629,17 +732,6 @@ const HomePage = (props) => {
                         <h6 className="h6Home ms-1 text-danger">
                           {product.salePrice}
                         </h6>
-                      </div>
-                      <div className="product__color__select">
-                        <label htmlFor="pc-7">
-                          <input className="inputHome" type="radio" id="pc-7" />
-                        </label>
-                        <label className="active black" htmlFor="pc-8">
-                          <input className="inputHome" type="radio" id="pc-8" />
-                        </label>
-                        <label className="grey" htmlFor="pc-9">
-                          <input className="inputHome" type="radio" id="pc-9" />
-                        </label>
                       </div>
                     </div>
                   </div>
@@ -906,222 +998,133 @@ const HomePage = (props) => {
             </div>
           </div>
           <div className="row product__filter">
-            <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
-              <div className="product__item">
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>Error: {error}</p>
+            ) : (
+              grocery.map((product) => (
                 <div
-                  className="product__item__pic set-bg"
-                  style={{
-                    backgroundImage:
-                      'url("https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/Tea.jpg")',
-                  }}
+                  key={product._id}
+                  className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"
                 >
-                  <ul className="product__hover ulHome">
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={heart} alt="OK" />{" "}
-                        <span>Favorite</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={compare} alt="OK" />
-                        <span>Compare</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="product__item__text">
-                  <h6 className="h6Home">Tata Tea</h6>
-                  <a className="aHome add-cart" href="#!">
-                    + Add To Cart
-                  </a>
-                  <div className="rating">
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                  </div>
-                  <h5 className="h5Home">
-                    <LuIndianRupee />
-                    578 (₹38.53 /100 g)
-                  </h5>
-                  <div className="product__color__select">
-                    <label htmlFor="pc-22">
-                      <input className="inputHome" type="radio" id="pc-22" />
-                    </label>
-                    <label className="active black" htmlFor="pc-23">
-                      <input className="inputHome" type="radio" id="pc-23" />
-                    </label>
-                    <label className="grey" htmlFor="pc-24">
-                      <input className="inputHome" type="radio" id="pc-24" />
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
-              <div className="product__item">
-                <div
-                  className="product__item__pic set-bg"
-                  style={{
-                    backgroundImage:
-                      'url("https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/Tea.jpg")',
-                  }}
-                >
-                  <ul className="product__hover ulHome">
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={heart} alt="OK" />{" "}
-                        <span>Favorite</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={compare} alt="OK" />
-                        <span>Compare</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="product__item__text">
-                  <h6 className="h6Home">Tata Tea</h6>
-                  <a className="aHome add-cart" href="#!">
-                    + Add To Cart
-                  </a>
-                  <div className="rating">
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                  </div>
-                  <h5 className="h5Home">
-                    <LuIndianRupee />
-                    578 (₹38.53 /100 g)
-                  </h5>
-                  <div className="product__color__select">
-                    <label htmlFor="pc-22">
-                      <input className="inputHome" type="radio" id="pc-22" />
-                    </label>
-                    <label className="active black" htmlFor="pc-23">
-                      <input className="inputHome" type="radio" id="pc-23" />
-                    </label>
-                    <label className="grey" htmlFor="pc-24">
-                      <input className="inputHome" type="radio" id="pc-24" />
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
-              <div className="product__item">
-                <div
-                  className="product__item__pic set-bg"
-                  style={{
-                    backgroundImage:
-                      'url("https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/Tea.jpg")',
-                  }}
-                >
-                  <ul className="product__hover ulHome">
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={heart} alt="OK" />{" "}
-                        <span>Favorite</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={compare} alt="OK" />
-                        <span>Compare</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="product__item__text">
-                  <h6 className="h6Home">Tata Tea</h6>
-                  <a className="aHome add-cart" href="#!">
-                    + Add To Cart
-                  </a>
-                  <div className="rating">
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                  </div>
-                  <h5 className="h5Home">
-                    <LuIndianRupee />
-                    578 (₹38.53 /100 g)
-                  </h5>
-                  <div className="product__color__select">
-                    <label htmlFor="pc-22">
-                      <input className="inputHome" type="radio" id="pc-22" />
-                    </label>
-                    <label className="active black" htmlFor="pc-23">
-                      <input className="inputHome" type="radio" id="pc-23" />
-                    </label>
-                    <label className="grey" htmlFor="pc-24">
-                      <input className="inputHome" type="radio" id="pc-24" />
-                    </label>
+                  <div className="product__item">
+                    <div className="product__item__wrapper">
+                      <div
+                        className="product__item__pic set-bg"
+                        style={{
+                          backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                        }}
+                      >
+                        <ul className="product__hover ulHome">
+                          <li>
+                            <a
+                              className="aHome"
+                              href="#!"
+                              onClick={() => {
+                                setFav([...fav, product]);
+                                toast.success("Added to Favorite", {
+                                  position: "bottom-right",
+                                  autoClose: 3000,
+                                  hideProgressBar: false,
+                                  closeOnClick: true,
+                                  pauseOnHover: true,
+                                  draggable: true,
+                                  progress: undefined,
+                                  theme: "light",
+                                  transition: Zoom,
+                                });
+                              }}
+                            >
+                              <img className="imgHome" src={heart} alt="OK" />{" "}
+                              <span>Favorite</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a className="aHome" href="#!">
+                              <img className="imgHome" src={compare} alt="OK" />
+                              <span>Compare</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="product__item__text">
+                        <h6 className="h6Home">{product.name}</h6>
+                        <h6 className="h6Home">{product.brand}</h6>
+                        <a
+                          className="aHome add-cart"
+                          href="#!"
+                          onClick={() => {
+                            setCart([...cart, product]);
+                            toast.success("Added to cart", {
+                              position: "bottom-right",
+                              autoClose: 3000,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                              theme: "light",
+                              transition: Zoom,
+                            });
+                          }}
+                        >
+                          + Add To Cart
+                        </a>
+                        <div
+                          className={`rating ${
+                            product.quantity > 5 ? "d-none" : ""
+                          }`}
+                        >
+                          <p className="pHome">
+                            Only {product.quantity} left in stock.
+                          </p>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                          <h6
+                            className={`h6Home ${
+                              product.sales
+                                ? "text-decoration-line-through text-muted"
+                                : ""
+                            }`}
+                          >
+                            <LuIndianRupee /> {product.price}
+                          </h6>
+                          {product.sales && (
+                            <h6 className="h6Home ms-1 text-danger">
+                              {product.salePrice}
+                            </h6>
+                          )}
+                        </div>
+                        <div className="product__color__select">
+                          <label htmlFor="pc-22">
+                            <input
+                              className="inputHome"
+                              type="radio"
+                              id="pc-22"
+                            />
+                          </label>
+                          <label className="active black" htmlFor="pc-23">
+                            <input
+                              className="inputHome"
+                              type="radio"
+                              id="pc-23"
+                            />
+                          </label>
+                          <label className="grey" htmlFor="pc-24">
+                            <input
+                              className="inputHome"
+                              type="radio"
+                              id="pc-24"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix">
-              <div className="product__item">
-                <div
-                  className="product__item__pic set-bg"
-                  style={{
-                    backgroundImage:
-                      'url("https://images-eu.ssl-images-amazon.com/images/G/31/img21/Grocery/GroceryNewLook/Tea.jpg")',
-                  }}
-                >
-                  <ul className="product__hover ulHome">
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={heart} alt="OK" />{" "}
-                        <span>Favorite</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="aHome" href="#!">
-                        <img className="imgHome" src={compare} alt="OK" />
-                        <span>Compare</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="product__item__text">
-                  <h6 className="h6Home">Tata Tea</h6>
-                  <a className="aHome add-cart" href="#!">
-                    + Add To Cart
-                  </a>
-                  <div className="rating">
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                    <i className="fa fa-star-o" />
-                  </div>
-                  <h5 className="h5Home">
-                    <LuIndianRupee />
-                    578 (₹38.53 /100 g)
-                  </h5>
-                  <div className="product__color__select">
-                    <label htmlFor="pc-22">
-                      <input className="inputHome" type="radio" id="pc-22" />
-                    </label>
-                    <label className="active black" htmlFor="pc-23">
-                      <input className="inputHome" type="radio" id="pc-23" />
-                    </label>
-                    <label className="grey" htmlFor="pc-24">
-                      <input className="inputHome" type="radio" id="pc-24" />
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))
+            )}
           </div>
           <p className="product__text text-center viewAll">
             <NavLink

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { toast, Zoom } from "react-toastify";
+import { toast } from "react-toastify";
 import { IoIosAdd } from "react-icons/io";
 import axios from "axios";
 
 const Product = () => {
   const [auth] = useAuth();
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  //getall products
+  // Get all products
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
@@ -18,14 +19,24 @@ const Product = () => {
       setProducts(data.products);
     } catch (error) {
       console.log(error);
-      toast.error("Someething Went Wrong");
+      toast.error("Something Went Wrong");
     }
   };
 
-  //lifecycle method
+  // Lifecycle method
   useEffect(() => {
     getAllProducts();
   }, []);
+
+  // Handle search input change
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Filter products based on search query
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -37,13 +48,13 @@ const Product = () => {
               <div
                 className="card"
                 style={{
-                  border: "1px solid black`,",
+                  border: "1px solid black",
                 }}
               >
                 <div className="card-body card-bodyProfile">
                   <div className="d-flex flex-column align-items-center text-center">
                     <img
-                      src={"https://bootdey.com/img/Content/avatar/avatar7.png"}
+                      src={`https://avatar.iran.liara.run/username?username=${auth.user?.first_name}+${auth.user?.last_name}&background=random`}
                       alt="Admin"
                       className="rounded-circle"
                       width={80}
@@ -57,41 +68,42 @@ const Product = () => {
                 </div>
               </div>
               <div className="card mt-4">
-                <div
-                  className="sidebar"
-                  style={{
-                    border: "1px solid black",
-                  }}
-                >
-                  <NavLink to="/dashboard/admin">DashBoard</NavLink>
+                <div className="sidebar">
                   <NavLink to="/dashboard/users">Users</NavLink>
                   <NavLink to="/dashboard/admins">Admins</NavLink>
-
                   <NavLink to="/dashboard/product">Product</NavLink>
                   <NavLink to="/dashboard/createCategory">Category</NavLink>
                 </div>
               </div>
             </div>
             <div className="col-md-8">
-              <div
-                className="card mb-3"
-                style={{
-                  border: "1px solid black",
-                }}
-              >
+              <div className="card mb-3">
                 <div className="card-body card-bodyProfile">
-                  <div className="text-end">
-                    <NavLink
-                      to="/dashboard/createProduct"
-                      className="btn btn-create btn-jelly"
-                    >
-                      <IoIosAdd />
-                      Create
-                    </NavLink>
+                  <div className="row mb-2">
+                    <div className="col-sm-9">
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-controlCategory"
+                          placeholder="Search admins"
+                          value={searchQuery}
+                          onChange={handleSearchInputChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="text-end col-sm-3">
+                      <NavLink
+                        to="/dashboard/createProduct"
+                        className="btn btn-create btn-jelly"
+                      >
+                        <IoIosAdd />
+                        Create
+                      </NavLink>
+                    </div>
                   </div>
                   <h1 className="text-center">All Products List</h1>
-                  <div className="row row-cols-2 row-cols-md-2 row-cols-lg-3 ">
-                    {products?.map((p) => (
+                  <div className="row row-cols-2 row-cols-md-2 row-cols-lg-3">
+                    {filteredProducts.map((p) => (
                       <div
                         key={p._id}
                         className="col mb-4"
@@ -111,24 +123,20 @@ const Product = () => {
                               <p className="card-text">{p.description}</p>
                               <p
                                 className={`card-text ${
-                                  p.sales === true
-                                    ? "text-decoration-line-through"
-                                    : ""
+                                  p.sales ? "text-decoration-line-through" : ""
                                 }`}
                               >
                                 Price: {p.price}
                               </p>
-                              {p.sales === true ? (
+                              {p.sales && (
                                 <p className="card-text">
                                   Sales: {p.salePrice}
                                 </p>
-                              ) : (
-                                ""
                               )}
-
                               <p className="card-text">
                                 Quantity: {p.quantity}
                               </p>
+                              <p className="card-text">color: {p.colour}</p>
                             </div>
                             <NavLink
                               to={`/dashboard/updateProduct/${p.slug}`}

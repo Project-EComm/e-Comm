@@ -29,7 +29,7 @@ const PageNotFound = (props) => {
         >
           The page you're loking for can't be found
         </p>
-        <div className="form-group col-lg-12 mx-auto mb-0">
+        <div className="form-group mx-auto mb-0">
           <button
             onClick={goBack}
             className="btn btn-primary btn-block py-2 homebtn"
