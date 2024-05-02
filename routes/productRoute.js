@@ -16,8 +16,6 @@ import {
   getGroceryFour,
   getSimilarFour,
   getProductsFromMultipleCategoriesController,
-  brainTreePaymentController,
-  braintreeTokenController,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -88,12 +86,4 @@ router.get(
   "/multiple-categories/:categorySlugs",
   getProductsFromMultipleCategoriesController
 );
-
-//payments routes
-//token
-router.get("/braintree/token", braintreeTokenController);
-
-//payments
-router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
-
 export default router;
