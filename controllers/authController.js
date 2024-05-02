@@ -2,7 +2,6 @@ import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
 import orderModel from "../models/orderModel.js";
 import JWT from "jsonwebtoken";
-import axios from "axios";
 
 // nodemailer
 import nodeMailer from "nodemailer";
