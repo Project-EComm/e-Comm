@@ -45,7 +45,7 @@ const HomePage = (props) => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/product/grocery-four/grocery"
+          "https://e-comm-2uyq.onrender.com/api/v1/product/grocery-four/grocery"
         );
         setGrocery(response.data.products);
         setLoading(false);
@@ -62,7 +62,7 @@ const HomePage = (props) => {
     const fetchTopSaleProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/product/top-4-products"
+          "https://e-comm-2uyq.onrender.com/api/v1/product/top-4-products"
         );
         setTopSaleProducts(response.data.products);
         setLoading(false);
@@ -79,7 +79,7 @@ const HomePage = (props) => {
     const fetchTopSaleProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/product/random-product"
+          "https://e-comm-2uyq.onrender.com/api/v1/product/random-product"
         );
         setMostSaleProducts(response.data.products);
         setLoading(false);
@@ -95,7 +95,7 @@ const HomePage = (props) => {
     const fetchTopSaleProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/product//latest-products"
+          "https://e-comm-2uyq.onrender.com/api/v1/product//latest-products"
         );
         setnewProducts(response.data.products);
         setLoading(false);
@@ -417,7 +417,7 @@ const HomePage = (props) => {
                     <div
                       className="product__item__pic set-bg"
                       style={{
-                        backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                        backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                       }}
                     >
                       <span className="label">Sale</span>
@@ -531,7 +531,7 @@ const HomePage = (props) => {
                     <div
                       className="product__item__pic set-bg"
                       style={{
-                        backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                        backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                       }}
                     >
                       <span className="label">
@@ -647,7 +647,7 @@ const HomePage = (props) => {
                     <div
                       className="product__item__pic set-bg"
                       style={{
-                        backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                        backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                       }}
                     >
                       <span className="label">Sale</span>
@@ -732,6 +732,12 @@ const HomePage = (props) => {
                         <h6 className="h6Home ms-1 text-danger">
                           {product.salePrice}
                         </h6>
+                        <NavLink
+                          to={`/detailPage/${product.slug}`}
+                          className="ms-auto text-dark"
+                        >
+                          View
+                        </NavLink>
                       </div>
                     </div>
                   </div>
@@ -1013,7 +1019,7 @@ const HomePage = (props) => {
                       <div
                         className="product__item__pic set-bg"
                         style={{
-                          backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                          backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                         }}
                       >
                         <ul className="product__hover ulHome">
@@ -1119,6 +1125,14 @@ const HomePage = (props) => {
                             />
                           </label>
                         </div>
+                        <NavLink
+                          style={{
+                            marginTop: "-30px",
+                          }}
+                          to="/grocery"
+                        >
+                          View More
+                        </NavLink>
                       </div>
                     </div>
                   </div>
@@ -1126,16 +1140,6 @@ const HomePage = (props) => {
               ))
             )}
           </div>
-          <p className="product__text text-center viewAll">
-            <NavLink
-              style={{
-                marginTop: "-30px",
-              }}
-              to="/grocery"
-            >
-              View More
-            </NavLink>
-          </p>
         </div>
       </section>
     </>

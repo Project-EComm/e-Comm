@@ -7,7 +7,7 @@ const Action = ({ mail }) => {
     try {
       // Make a request to your backend API to remove the admin
       await axios.delete(
-        `http://localhost:8080/admin/removeAdminByEmail/${mail}`
+        `https://e-comm-2uyq.onrender.com/admin/removeAdminByEmail/${mail}`
       );
     } catch (error) {
       console.error("Error removing admin:", error.message);

@@ -11,7 +11,7 @@ const OtpEnter = (props) => {
   const handleVerifyOTP = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/auth/otpVerify",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/otpVerify",
         {
           method: "POST",
           headers: {

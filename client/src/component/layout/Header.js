@@ -28,8 +28,8 @@ import { useFav } from "../../context/fav.js";
 
 function Header(props) {
   const [auth, setauth] = useAuth();
-  const [cart, setCart] = useCart();
-  const [fav, setFav] = useFav();
+  const [cart] = useCart();
+  const [fav] = useFav();
   const [isMenuActive, setMenuActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [ip, setIp] = useState();

@@ -14,7 +14,7 @@ const MyProfile = (props) => {
 
     try {
       const res = await fetch(
-        "http://localhost:8080/api/v1/auth/sendEmailOTP",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/sendEmailOTP",
         {
           method: "POST",
           headers: {

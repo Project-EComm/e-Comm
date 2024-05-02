@@ -31,7 +31,7 @@ const PasswordChange = (props) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/passUpdate",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/passUpdate",
         {
           email: auth?.user?.email,
           password: pass,

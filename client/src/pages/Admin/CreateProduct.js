@@ -23,7 +23,7 @@ const CreateProduct = () => {
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-category"
+        "https://e-comm-2uyq.onrender.com/api/v1/category/get-category"
       );
       if (data?.success) {
         setCategories(data?.category);
@@ -54,7 +54,7 @@ const CreateProduct = () => {
       productData.append("sales", sales);
       productData.append("salePrice", salePrice);
       const { data } = axios.post(
-        "http://localhost:8080/api/v1/product/create-product",
+        "https://e-comm-2uyq.onrender.com/api/v1/product/create-product",
         productData
       );
       if (data?.success) {

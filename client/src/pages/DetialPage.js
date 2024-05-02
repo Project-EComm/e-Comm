@@ -20,7 +20,7 @@ const DetailPage = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/get-product/${slug}`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/get-product/${slug}`
         );
         // Assuming the product data is in response.data.product
         setProduct(response.data.product);
@@ -38,7 +38,7 @@ const DetailPage = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/similar-four/${product?.category.slug}`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/similar-four/${product?.category.slug}`
         );
         setGrocery(response.data.products);
       } catch (error) {
@@ -64,7 +64,7 @@ const DetailPage = () => {
                       margin: "auto",
                     }}
                     className="rounded-4 fit"
-                    src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                    src={`https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id}`}
                     alt={product.name}
                   />
                 )}
@@ -184,7 +184,7 @@ const DetailPage = () => {
                     <div
                       className="product__item__pic set-bg"
                       style={{
-                        backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                        backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                       }}
                     >
                       <ul className="product__hover ulHome">

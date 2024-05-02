@@ -12,7 +12,7 @@ const ForgetPass = (props) => {
 
     try {
       const res = await fetch(
-        "http://localhost:8080/api/v1/auth/forgetPassword",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/forgetPassword",
         {
           method: "POST",
           headers: {

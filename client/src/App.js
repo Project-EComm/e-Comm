@@ -80,6 +80,7 @@ import MenWatches from "./pages/MenWatches.js";
 import DetialPage from "./pages/DetialPage.js";
 import CartPage from "./pages/CartPage.js";
 import FavPage from "./pages/FavPage.js";
+import CheckOut from "./pages/CheckOut.js";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -240,6 +241,7 @@ function App() {
         <Route path="/wallets" element={<Wallets />} />
 
         <Route path="/detailPage/:slug" element={<DetialPage />} />
+        <Route path="/checkOut" element={<CheckOut />} />
       </Routes>
       <Footer mode={mode} />
     </>

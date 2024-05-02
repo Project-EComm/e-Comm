@@ -16,7 +16,7 @@ const Messages = ({ mail }) => {
     try {
       // Make a request to your backend API
       const response = await axios.post(
-        "http://localhost:8080/api/v1/auth/sendMessage",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/sendMessage",
         {
           email: mail,
           subject: subject,

@@ -37,10 +37,13 @@ const Login = (props) => {
     // If all validations pass, you can proceed with further actions
 
     try {
-      const res = await axios.post("http://localhost:8080/api/v1/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       if (res.data.success) {
         toast.success(res.data.message, {
           position: "top-right",

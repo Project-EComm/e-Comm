@@ -27,7 +27,7 @@ const FemaleSunglasses = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/products-by-category/female-sunglass`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/products-by-category/female-sunglass`
         );
         setProducts(response.data.products);
         const brands = response.data.products.map((product) => product.brand);
@@ -322,7 +322,7 @@ const FemaleSunglasses = () => {
                         <div
                           className="product__item__pic set-bg"
                           style={{
-                            backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                            backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                           }}
                         >
                           <ul className="product__hover ulHome">

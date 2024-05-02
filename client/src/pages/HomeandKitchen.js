@@ -12,19 +12,24 @@ const HomeandKitchen = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cart, setCart] = useCart();
-  const [fav, setFav] = useFav();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [sortByPrice, setSortByPrice] = useState(null);
+  const [brand, setBrand] = useState("");
+  const [allBrand, setAllBrand] = useState([]);
+  const [color, setColor] = useState("");
+  const [cart, setCart] = useCart();
+  const [fav, setFav] = useFav();
 
   useEffect(() => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product//products-by-category/home-and-kitchen`
+          `https://e-comm-2uyq.onrender.com/api/v1/product//products-by-category/home-and-kitchen`
         );
         setProducts(response.data.products);
+        const brands = response.data.products.map((product) => product.brand);
+        setAllBrand(brands);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -66,8 +71,25 @@ const HomeandKitchen = () => {
     }
   };
 
-  // Function to filter products based on price range
-  const filteredProducts = products.filter((product) => {
+  // filter on basis of brands
+  const filteredProductsByBrand = products.filter((product) => {
+    if (!brand) {
+      return true;
+    } else {
+      return product.brand === brand;
+    }
+  }); // Filter products based on color
+  const filteredProductsByColor = filteredProductsByBrand.filter((product) => {
+    if (!color) {
+      return true;
+    } else {
+      const productColor = product.colour;
+      return productColor.toLowerCase() === color;
+    }
+  });
+
+  // Filter products based on price after applying brand and color filters
+  const filteredProductsByPrice = filteredProductsByColor.filter((product) => {
     const productPrice = parseFloat(
       product.sales ? product.salePrice : product.price
     );
@@ -90,25 +112,24 @@ const HomeandKitchen = () => {
       <div className="container">
         <div className="row">
           <div
-            className="col-lg-3 col-md-4 col-sm-12"
+            className="col-lg-3 col-md-4 col-sm-12 mb-2"
             style={{
               height: "fit-content",
+              backgroundColor: "#f3f2ee",
             }}
           >
-            <h6
-              className="text-start"
-              style={{
-                color: "#204969",
-                marginBottom: "-15px",
-              }}
-            >
-              Filter
-            </h6>
-            {/* Price filter */}
-            <div className="pricefilter">
-              <div className="price-sort mt-4 mb-2 me-2">
+            <div className="pricefilter mb-3">
+              <div className="price-sort mt-4 mb-2 me-2 ms-auto ms-auto">
                 <div className="d-flex flex-row align-items-center">
-                  <div className="d-flex flex-row border">
+                  <div className="d-flex flex-row">
+                    <h6
+                      style={{
+                        fontSize: "14px",
+                        marginTop: "6%",
+                      }}
+                    >
+                      Price:
+                    </h6>
                     <div className="field">
                       <input
                         style={{
@@ -125,7 +146,7 @@ const HomeandKitchen = () => {
                         onChange={(e) => setMinPrice(e.target.value)}
                       />
                     </div>
-                    <div className="mt-2">-</div>
+                    <div className="mt-2 ms-2">-</div>
                     <div className="field ms-2">
                       <input
                         style={{
@@ -145,26 +166,134 @@ const HomeandKitchen = () => {
                   </div>
                 </div>
               </div>
-              {/* Price sort */}
-              <div className="price-sort mt-4 mb-2">
+              <div className="price-sort mt-4 mb-2 ms-auto me-auto">
+                <h6 className="text-uppercase d-md-block d-none">Sort</h6>
                 <div className="d-flex flex-column">
                   <select
-                    class="form-control searchbycategory border"
+                    className="searchbycategory w-100"
                     id="category"
                     value={sortByPrice}
                     onChange={handleSortByPriceChange}
                     style={{
                       maxWidth: "154px",
                       fontSize: "14px",
+                      border: "1px solid red",
+                      backgroundColor: "white",
                       borderRadius: "0px",
                       height: "42px",
+                      textAlign: "center",
                     }}
                   >
-                    <option>Sort By Price</option>
+                    <option value="">Sort By Price</option>
                     <option value="priceLowToHigh">Price: Low to High</option>
                     <option value="priceHighToLow">Price: High to Low</option>
                   </select>
                 </div>
+              </div>
+              <div className="price-sort mt-4 mb-2 ms-auto me-auto">
+                <h6 className="text-uppercase d-md-block d-none">Brands</h6>
+                <div className="d-flex flex-column">
+                  <select
+                    className="searchbycategory w-100"
+                    id="category"
+                    value={brand}
+                    onChange={(e) => setBrand(e.target.value)}
+                    style={{
+                      maxWidth: "154px",
+                      fontSize: "14px",
+                      border: "1px solid red",
+                      backgroundColor: "white",
+                      borderRadius: "0px",
+                      height: "42px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <option value="">All</option>
+                    {allBrand.map((brand, index) => (
+                      <option key={index} value={brand}>
+                        {brand}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="price-sort mt-4 mb-4 me-auto">
+              <h6 className="text-uppercase d-md-block d-none">Colour</h6>
+              <div className="d-flex flex-row">
+                <h6 className="ms-3 d-block d-md-none">Color: </h6>
+                <div
+                  className="w-10 ms-2 me-1"
+                  style={{
+                    backgroundColor: "red",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "red" ? setColor("") : setColor("red");
+                  }}
+                ></div>
+                <div
+                  className="w-10 me-1"
+                  style={{
+                    backgroundColor: "black",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "black" ? setColor("") : setColor("black");
+                  }}
+                ></div>
+                <div
+                  className="w-10 me-1"
+                  style={{
+                    backgroundColor: "white",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "white" ? setColor("") : setColor("white");
+                  }}
+                ></div>
+                <div
+                  className="w-10 me-1"
+                  style={{
+                    backgroundColor: "gold",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "gold" ? setColor("") : setColor("gold");
+                  }}
+                ></div>
+                <div
+                  className="w-10 me-1"
+                  style={{
+                    backgroundColor: "blue",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "blue" ? setColor("") : setColor("blue");
+                  }}
+                ></div>
+                <div
+                  className="w-10 me-1"
+                  style={{
+                    backgroundColor: "green",
+                    height: "20px",
+                    width: "20px",
+                    borderRadius: "50%",
+                  }}
+                  onClick={() => {
+                    color === "green" ? setColor("") : setColor("green");
+                  }}
+                ></div>
               </div>
             </div>
           </div>
@@ -176,7 +305,7 @@ const HomeandKitchen = () => {
               ) : error ? (
                 <p>Error: {error}</p>
               ) : (
-                (filteredProducts || products).map((product) => (
+                filteredProductsByPrice.map((product) => (
                   <div
                     key={product._id}
                     className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix"
@@ -185,12 +314,29 @@ const HomeandKitchen = () => {
                       <div
                         className="product__item__pic set-bg"
                         style={{
-                          backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                          backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                         }}
                       >
                         <ul className="product__hover ulHome">
                           <li>
-                            <a className="aHome" href="#!">
+                            <a
+                              className="aHome"
+                              href="#!"
+                              onClick={() => {
+                                setFav([...fav, product]);
+                                toast.success("Added to Favorite", {
+                                  position: "bottom-right",
+                                  autoClose: 3000,
+                                  hideProgressBar: false,
+                                  closeOnClick: true,
+                                  pauseOnHover: true,
+                                  draggable: true,
+                                  progress: undefined,
+                                  theme: "light",
+                                  transition: Zoom,
+                                });
+                              }}
+                            >
                               <img className="imgHome" src={heart} alt="OK" />{" "}
                               <span>Favorite</span>
                             </a>

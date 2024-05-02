@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 import { useCart } from "../context/cart";
 import { useFav } from "../context/fav";
 import { toast, Zoom } from "react-toastify";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 const MenDresses = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +24,7 @@ const MenDresses = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/multiple-categories/western_jeans-and-jeggings_famale-kurtas_salwar-kameez_sarees_lehnga_female-sports_female-long-wear`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/multiple-categories/men-dresses`
         );
         setProducts(response.data.products);
         const brands = response.data.products.map((product) => product.brand);
@@ -111,217 +110,6 @@ const MenDresses = () => {
 
   return (
     <>
-      <section className="categories-slider-container-dress mt-2">
-        <Splide
-          options={{
-            rewind: true,
-            gap: "1rem",
-            pagination: false,
-            perMove: 1,
-            type: "loop",
-            arrows: false,
-            perPage: {
-              1200: 5,
-              992: 4,
-              768: 3,
-              576: 2,
-            },
-          }}
-          aria-label="My Favorite Images"
-          className="ms-2"
-        >
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink className="ms-2" to="/western">
-              <img
-                src="https://img.freepik.com/free-photo/young-posh-woman-bright-overalls-wearing-hat-confidently-looking-away-gorgeous-lady-posing-outdoor_574295-4348.jpg?t=st=1711358252~exp=1711361852~hmac=1e902a30d5ea6fa8cc569634165422742e02b0fcdbbfe3dcaf1a6efa2b7fe398&w=360"
-                alt=" 1"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">Western</h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/jeansandjeggings">
-              <img
-                src="https://img.freepik.com/free-photo/full-length-young-slim-female-girl-denim-jeans-gray-background_155003-1644.jpg?t=st=1711358337~exp=1711361937~hmac=c3dfa8b06aff7a7f947d95218ebacff51333ac678572901b5713f653f8ee6d27&w=360"
-                alt=" 2"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">
-                Jeans - Jeggings
-              </h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/famale-kurtas">
-              <img
-                src="https://img.freepik.com/free-photo/front-view-woman-green-house_23-2148261258.jpg?t=st=1711358424~exp=1711362024~hmac=c5219ce032798b1e85dc18314d830b30f0f650cd7269fc1f1501ac461b408ac3&w=360"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">Kurtas</h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/salwarKameez">
-              <img
-                src="https://img.freepik.com/free-photo/young-attractive-indian-woman-traditional-dress-woman-dancing-against-white-background_1157-48166.jpg?t=st=1711358500~exp=1711362100~hmac=269dcd3617426c18a94770034c3bf5650e91b2b28dce2562425562e7e8bf5fd1&w=360"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">
-                Salwar Kameez
-              </h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/sarees">
-              <img
-                src="https://img.freepik.com/free-photo/young-indian-woman-wearing-sari_23-2149400842.jpg?t=st=1711358565~exp=1711362165~hmac=86d8c17dc5a922b9705f7570c6a18b195a3a16c7962b295bf1bd53187843a37d&w=360"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">Sarees</h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/lehnga">
-              <img
-                src="https://img.freepik.com/free-photo/beautiful-young-woman-wearing-sari_23-2149502994.jpg?t=st=1711358617~exp=1711362217~hmac=7cae7d567f5a8f5d42b51e3173821d078af5c3ca781ab8f69a52936caca531fc&w=360"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">Lehnga</h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/femaleLong-wear">
-              <img
-                src="https://img.freepik.com/free-photo/young-beautiful-woman-blue-pajamas-laying-bed_141793-46750.jpg?t=st=1711358675~exp=1711362275~hmac=60de05237cd3f9faceca877c877b2748018fbebbaa3ff9599700803610cb68a7&w=900"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">
-                Long Wear
-              </h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-          <SplideSlide className="d-flex flex-column align-items-center">
-            <NavLink to="/female-Sports">
-              <img
-                src="https://img.freepik.com/free-photo/close-up-young-fit-person-jogging-by-sea_329181-16773.jpg?t=st=1711358708~exp=1711362308~hmac=e825e77e2284beea5cee9b6d394e8a0ef061da1cea60c79274ac27aeca327f87&w=900"
-                alt=" 3"
-                className="rounded-circle"
-                style={{
-                  width: "110px",
-                  height: "110px",
-                  objectFit: "cover",
-                  aspectRatio: "3 / 2",
-                }}
-              />
-              <h6 className="bold pb-1 mt-1 text-dark text-center">Sports</h6>
-              <hr
-                className="text-dark ms-auto me-auto"
-                style={{
-                  width: "40%",
-                  marginTop: "-10px",
-                }}
-              />
-            </NavLink>
-          </SplideSlide>
-        </Splide>
-      </section>
       <section className="product spad mt-5">
         <div className="container">
           <div className="row">
@@ -528,7 +316,7 @@ const MenDresses = () => {
                         <div
                           className="product__item__pic set-bg"
                           style={{
-                            backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                            backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                           }}
                         >
                           <ul className="product__hover ulHome">

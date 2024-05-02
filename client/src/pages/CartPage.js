@@ -1,23 +1,34 @@
 import React from "react";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { LuIndianRupee } from "react-icons/lu";
+
 const CartPage = () => {
   const [auth] = useAuth();
   const [cart, setCart] = useCart();
+  const navigate = useNavigate();
 
+  const address = auth?.user?.address ?? "Not Define";
+  const city = auth?.user?.city ?? "Not Define";
+  const state = auth?.user?.state ?? "Not Define";
+  const pincode = auth?.user?.pincode ?? "Not Define";
+
+  const fullAdd =
+    (address || city || state || pincode) === "Not Define"
+      ? "Not Define"
+      : address + ", " + city + ", " + state + ", " + pincode;
   //total price
   const totalPrice = () => {
     try {
       let total = 0;
-      cart?.map((item) => {
+      for (let item of cart) {
         if (item.sales) {
           total += item.salePrice;
         } else {
           total += item.price;
         }
-      });
+      }
       return total.toLocaleString("en-US", {
         style: "currency",
         currency: "INR",
@@ -26,6 +37,7 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
   //detele item
   const removeCartItem = (pid) => {
     try {
@@ -38,6 +50,7 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <div className="container">
@@ -60,7 +73,7 @@ const CartPage = () => {
                             <td width={90}>
                               <div className="cart-product-imitation">
                                 <img
-                                  src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                                  src={`https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${p._id}`}
                                   alt="Product"
                                   style={{
                                     width: "90px",
@@ -132,9 +145,42 @@ const CartPage = () => {
                 </div>
 
                 <div className="ibox-content">
-                  <button className="btn btn-primary pull-right btn-jelly">
-                    <i className="fa fa fa-shopping-cart" /> Checkout
-                  </button>
+                  {
+                    <div>
+                      {auth?.user ? (
+                        fullAdd === "Not Define" ? (
+                          <>
+                            <div>
+                              <button
+                                className="btn btn-outline-warning"
+                                onClick={() => navigate("/dashboard/profile")}
+                              >
+                                Update Address
+                              </button>
+                            </div>
+                          </>
+                        ) : (
+                          <NavLink
+                            to="/checkout"
+                            className="btn btn-primary pull-right btn-jelly"
+                          >
+                            <i className="fa fa fa-shopping-cart" /> Checkout
+                          </NavLink>
+                        )
+                      ) : (
+                        <button
+                          className="btn btn-primary pull-right btn-jelly"
+                          onClick={() =>
+                            navigate("/login", {
+                              state: "/cart",
+                            })
+                          }
+                        >
+                          Plase Login to checkout
+                        </button>
+                      )}
+                    </div>
+                  }
                   <NavLink to="/" className="btn btn-white btn-jelly">
                     <i className="fa fa-arrow-left" /> Continue shopping
                   </NavLink>
@@ -152,8 +198,46 @@ const CartPage = () => {
                   <hr />
                   <div className="m-t-sm text-center">
                     <div className="btn-group">
-                      <a href="#!" className="btn btn-primary btn-jelly btn-sm">
-                        <i className="fa fa-shopping-cart" /> Checkout
+                      <a href="#!">
+                        {
+                          <div>
+                            {auth?.user ? (
+                              fullAdd === "Not Define" ? (
+                                <>
+                                  <div>
+                                    <button
+                                      className="btn btn-outline-warning"
+                                      onClick={() =>
+                                        navigate("/dashboard/profile")
+                                      }
+                                    >
+                                      Update Address
+                                    </button>
+                                  </div>
+                                </>
+                              ) : (
+                                <NavLink
+                                  to="/checkout"
+                                  className="btn btn-primary pull-right btn-jelly"
+                                >
+                                  <i className="fa fa fa-shopping-cart" />{" "}
+                                  Checkout
+                                </NavLink>
+                              )
+                            ) : (
+                              <button
+                                className="btn btn-primary pull-right btn-jelly"
+                                onClick={() =>
+                                  navigate("/login", {
+                                    state: "/cart",
+                                  })
+                                }
+                              >
+                                Plase Login to checkout
+                              </button>
+                            )}
+                          </div>
+                        }
                       </a>
                     </div>
                   </div>
@@ -170,8 +254,7 @@ const CartPage = () => {
                   <span className="small">
                     Phone Number: {auth?.user?.phoneNumber}
                     <br />
-                    Address: {auth?.user?.address}, {auth?.user?.city},
-                    {auth?.user?.state} {auth?.user?.pincode}.
+                    Address: {fullAdd}
                   </span>
                   <br />
                   <div className="m-t-sm text-center mt-3">

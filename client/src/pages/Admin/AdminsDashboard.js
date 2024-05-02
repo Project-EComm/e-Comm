@@ -20,7 +20,7 @@ const AdminsDashboard = () => {
       try {
         // Make a request to your backend API to get all admins
         const response = await axios.get(
-          "http://localhost:8080/api/v1/auth/getAllAdmins"
+          "https://e-comm-2uyq.onrender.com/api/v1/auth/getAllAdmins"
         );
 
         // Update the state with the fetched admins data
@@ -36,9 +36,12 @@ const AdminsDashboard = () => {
   const handleRemoveAdmin = async (email) => {
     try {
       // Make a request to your backend API to remove the admin
-      await axios.put("http://localhost:8080/api/v1/auth/removeFromAdmin", {
-        email: email,
-      });
+      await axios.put(
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/removeFromAdmin",
+        {
+          email: email,
+        }
+      );
       setAdmins((prevAdmins) =>
         prevAdmins.filter((admin) => admin.email !== email)
       );

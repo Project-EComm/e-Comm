@@ -30,11 +30,14 @@ const UsersDashboard = () => {
       console.log("Mail before removing admin:", mail);
 
       // Make a request to your backend API to remove the admin
-      await axios.put("http://localhost:8080/api/v1/auth/giveAdminRole", {
-        email: mail,
-      });
+      await axios.put(
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/giveAdminRole",
+        {
+          email: mail,
+        }
+      );
       const response = await axios.get(
-        "http://localhost:8080/api/v1/auth/all-users"
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/all-users"
       );
 
       // Update the 'admins' state with the fetched data
@@ -82,7 +85,7 @@ const UsersDashboard = () => {
       try {
         // Make a request to your backend API to get all users
         const response = await axios.get(
-          "http://localhost:8080/api/v1/auth/all-users"
+          "https://e-comm-2uyq.onrender.com/api/v1/auth/all-users"
         );
 
         // Update the state with the fetched user data

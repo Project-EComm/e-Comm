@@ -4,9 +4,6 @@ import { FaXTwitter } from "react-icons/fa6";
 
 import { LuFacebook } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
-import { useCart } from "../context/cart";
-import { useFav } from "../context/fav";
-import { toast, Zoom } from "react-toastify";
 const AboutUs = () => {
   return (
     <>

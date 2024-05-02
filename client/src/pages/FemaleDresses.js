@@ -25,7 +25,7 @@ const FemaleDresses = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/multiple-categories/western_jeans-and-jeggings_famale-kurtas_salwar-kameez_sarees_lehnga_female-sports_female-long-wear`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/multiple-categories/western_jeans-and-jeggings_famale-kurtas_salwar-kameez_sarees_lehnga_female-sports_female-long-wear`
         );
         setProducts(response.data.products);
         const brands = response.data.products.map((product) => product.brand);
@@ -528,7 +528,7 @@ const FemaleDresses = () => {
                         <div
                           className="product__item__pic set-bg"
                           style={{
-                            backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                            backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                           }}
                         >
                           <ul className="product__hover ulHome">

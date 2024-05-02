@@ -64,14 +64,17 @@ const Register = (props) => {
     // If all validations pass, you can proceed with further actions
 
     try {
-      res = await axios.post("http://localhost:8080/api/v1/auth/register", {
-        first_name,
-        last_name,
-        email,
-        countrycode,
-        phoneNumber,
-        password,
-      });
+      res = await axios.post(
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/register",
+        {
+          first_name,
+          last_name,
+          email,
+          countrycode,
+          phoneNumber,
+          password,
+        }
+      );
 
       if (res.data.success) {
         toast.success(res.data.message, {

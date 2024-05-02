@@ -17,7 +17,7 @@ const SearchProduct = ({ queryCome }) => {
   const handleSearch = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/v1/product/search/${queryCome}`
+        `https://e-comm-2uyq.onrender.com/api/v1/product/search/${queryCome}`
       );
       setSearchResults(response.data.products);
       setErrorMessage("");
@@ -52,12 +52,29 @@ const SearchProduct = ({ queryCome }) => {
                   <div
                     className="product__item__pic set-bg"
                     style={{
-                      backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                      backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                     }}
                   >
                     <ul className="product__hover ulHome">
                       <li>
-                        <a className="aHome" href="#!">
+                        <a
+                          className="aHome"
+                          href="#!"
+                          onClick={() => {
+                            setFav([...fav, product]);
+                            toast.success("Added to Favorite", {
+                              position: "bottom-right",
+                              autoClose: 3000,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                              theme: "light",
+                              transition: Zoom,
+                            });
+                          }}
+                        >
                           <img className="imgHome" src={heart} alt="OK" />{" "}
                           <span>Favorite</span>
                         </a>

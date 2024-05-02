@@ -25,7 +25,7 @@ const FemaleEyewear = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/multiple-categories/female-sunglass_female-reading-glasses_female-spectacle-frames_lenses_glasses-case`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/multiple-categories/female-sunglass_female-reading-glasses_female-spectacle-frames_lenses_glasses-case`
         );
         setProducts(response.data.products);
         const brands = response.data.products.map((product) => product.brand);
@@ -462,7 +462,7 @@ const FemaleEyewear = () => {
                         <div
                           className="product__item__pic set-bg"
                           style={{
-                            backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                            backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                           }}
                         >
                           <ul className="product__hover ulHome">

@@ -1,13 +1,11 @@
 import React from "react";
 import { useFav } from "../context/fav";
 import { useCart } from "../context/cart";
-import { useAuth } from "../context/auth";
 import { NavLink } from "react-router-dom";
 import { LuIndianRupee } from "react-icons/lu";
 import { toast, Zoom } from "react-toastify";
 
 const FavPage = () => {
-  const [auth] = useAuth();
   const [fav, setFav] = useFav();
   const [cart, setCart] = useCart();
 
@@ -15,13 +13,13 @@ const FavPage = () => {
   const totalPrice = () => {
     try {
       let total = 0;
-      fav?.map((item) => {
+      for (let item of fav) {
         if (item.sales) {
           total += item.salePrice;
         } else {
           total += item.price;
         }
-      });
+      }
       return total.toLocaleString("en-US", {
         style: "currency",
         currency: "INR",
@@ -30,6 +28,7 @@ const FavPage = () => {
       console.log(error);
     }
   };
+
   //detele item
   const removeFavItem = (pid) => {
     try {
@@ -64,7 +63,7 @@ const FavPage = () => {
                             <td width={90}>
                               <div className="cart-product-imitation">
                                 <img
-                                  src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                                  src={`https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${p._id}`}
                                   alt="Product"
                                   style={{
                                     width: "90px",
@@ -158,9 +157,6 @@ const FavPage = () => {
                 </div>
 
                 <div className="ibox-content">
-                  <button className="btn btn-primary pull-right btn-jelly">
-                    <i className="fa fa fa-shopping-cart" /> Checkout
-                  </button>
                   <NavLink to="/" className="btn btn-white btn-jelly">
                     <i className="fa fa-arrow-left" /> Continue shopping
                   </NavLink>

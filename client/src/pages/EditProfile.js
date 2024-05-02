@@ -37,7 +37,7 @@ const EditProfile = (props) => {
     try {
       // Make the API call to update the address
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/addUpdate",
+        "https://e-comm-2uyq.onrender.com/api/v1/auth/addUpdate",
         {
           email: mail,
           first_name: fname,

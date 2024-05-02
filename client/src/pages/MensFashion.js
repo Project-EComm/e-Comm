@@ -25,7 +25,7 @@ const MensFashion = () => {
     const fetchProductsByCategory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/product/multiple-categories/western_jeans-and-jeggings_famale-kurtas_salwar-kameez_sarees_lehnga_female-sports_female-long-wear_female-formal-shoe_female-sports-shoes_female-boots_female-sandals_heels_female-sunglass_female-reading-glasses_female-spectacle-frames_lenses_glasses-case_female-classic-watches_female-smart-watches_female-gold-watches_female-metal-watches_female-leather-watches_gold-jewellery_silver-jewellery_diamond-jewellery_artificial-jewellery`
+          `https://e-comm-2uyq.onrender.com/api/v1/product/multiple-categories/men-dresses_men-eyewear_men-shoes_men-watches_wallets`
         );
         setProducts(response.data.products);
         const brands = response.data.products.map((product) => product.brand);
@@ -452,7 +452,7 @@ const MensFashion = () => {
                         <div
                           className="product__item__pic set-bg"
                           style={{
-                            backgroundImage: `url(http://localhost:8080/api/v1/product/product-photo/${product._id})`,
+                            backgroundImage: `url(https://e-comm-2uyq.onrender.com/api/v1/product/product-photo/${product._id})`,
                           }}
                         >
                           <ul className="product__hover ulHome">
