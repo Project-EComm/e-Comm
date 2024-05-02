@@ -14,10 +14,6 @@ import {
   removeAdminRole,
   giveAdminRole,
   sendMail,
-  getOrdersController,
-  getAllOrdersController,
-  orderStatusController,
-  placeOrder,
 } from "../controllers/authController.js";
 
 import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
@@ -77,23 +73,5 @@ router.put("/giveAdminRole", requireSignIn, isAdmin, giveAdminRole);
 
 // sendeMessage
 router.post("/sendMessage", requireSignIn, isAdmin, sendMail);
-
-// order
-//orders
-router.get("/orders", requireSignIn, getOrdersController);
-
-//all orders
-router.get("/all-orders", requireSignIn, isAdmin, getAllOrdersController);
-
-// order status update
-router.put(
-  "/order-status/:orderId",
-  requireSignIn,
-  isAdmin,
-  orderStatusController
-);
-
-// order store
-router.post("/place-order", placeOrder);
 
 export default router;

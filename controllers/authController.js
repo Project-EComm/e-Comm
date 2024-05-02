@@ -1,6 +1,5 @@
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
-import orderModel from "../models/orderModel.js";
 import JWT from "jsonwebtoken";
 
 // nodemailer
@@ -702,86 +701,5 @@ export const sendMail = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ success: false, message: "Server Error" });
-  }
-};
-//orders
-export const getOrdersController = async (req, res) => {
-  try {
-    const orders = await orderModel
-      .find({ buyer: req.user._id })
-      .populate("products", "-photo")
-      .populate("buyer", "name");
-    res.json(orders);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Error WHile Geting Orders",
-      error,
-    });
-  }
-};
-
-//orders
-export const getAllOrdersController = async (req, res) => {
-  try {
-    const orders = await orderModel
-      .find({})
-      .populate("products", "-photo")
-      .populate("buyer", "name")
-      .sort({ createdAt: "-1" });
-    res.json(orders);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Error WHile Geting Orders",
-      error,
-    });
-  }
-};
-
-//order status
-export const orderStatusController = async (req, res) => {
-  try {
-    const { orderId } = req.params;
-    const { status } = req.body;
-    const orders = await orderModel.findByIdAndUpdate(
-      orderId,
-      { status },
-      { new: true }
-    );
-    res.json(orders);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Error While Updateing Order",
-      error,
-    });
-  }
-};
-
-// place order
-
-export const placeOrder = async (req, res) => {
-  try {
-    const { products, payment, buyer } = req.body;
-
-    // Create a new order
-    const order = new Order({
-      products,
-      payment,
-      buyer,
-      status: "Processing", // Assuming the default status is "Processing"
-    });
-
-    // Save the order to the database
-    await order.save();
-
-    res.status(201).json({ message: "Order placed successfully", order });
-  } catch (error) {
-    console.error("Error placing order:", error);
-    res.status(500).json({ message: "Could not place order", error });
   }
 };
