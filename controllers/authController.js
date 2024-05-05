@@ -1,5 +1,6 @@
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
+import orderModel from "../models/orderModel.js";
 import JWT from "jsonwebtoken";
 
 // nodemailer
@@ -701,5 +702,41 @@ export const sendMail = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ success: false, message: "Server Error" });
+  }
+};
+
+// place order
+export const placeOrder = async (req, res) => {
+  try {
+    const { products, payment, buyer } = req.body;
+
+    // Create a new order
+    const order = new orderModel({
+      products,
+      payment,
+      buyer,
+      status: "Processing", // Assuming the default status is "Processing"
+    });
+
+    // Save the order to the database
+    await order.save();
+
+    res.status(201).json({ message: "Order placed successfully", order });
+  } catch (error) {
+    console.error("Error placing order:", error);
+    res.status(500).json({ message: "Could not place order", error });
+  }
+};
+
+// get all orders
+export const getAllOrders = async (req, res) => {
+  try {
+    // Find all orders in the database
+    const orders = await orderModel.find();
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ message: "Could not fetch orders", error });
   }
 };
