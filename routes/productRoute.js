@@ -16,6 +16,7 @@ import {
   getGroceryFour,
   getSimilarFour,
   getProductsFromMultipleCategoriesController,
+  getSingleProductControllerId,
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -86,4 +87,8 @@ router.get(
   "/multiple-categories/:categorySlugs",
   getProductsFromMultipleCategoriesController
 );
+
+// product by id
+router.get("/product-by-id/:pid", getSingleProductControllerId);
+
 export default router;

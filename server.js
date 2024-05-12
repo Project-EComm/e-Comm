@@ -17,7 +17,7 @@ connectDB();
 const app = express();
 
 //middleware
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://apkabazzar.netlify.app" }));
 app.use(express.json());
 app.use(morgan("dev"));
 

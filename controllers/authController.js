@@ -708,13 +708,27 @@ export const sendMail = async (req, res) => {
 // place order
 export const placeOrder = async (req, res) => {
   try {
-    const { products, payment, buyer } = req.body;
+    const {
+      products,
+      payment,
+      buyerName,
+      buyerPhone,
+      buyerEmail,
+      buyerAddress,
+      amount,
+      deliveryType,
+    } = req.body; // Extract userId from request body
 
     // Create a new order
     const order = new orderModel({
       products,
       payment,
-      buyer,
+      buyerName,
+      buyerPhone,
+      buyerEmail,
+      buyerAddress,
+      amount,
+      deliveryType,
       status: "Processing", // Assuming the default status is "Processing"
     });
 
@@ -727,16 +741,56 @@ export const placeOrder = async (req, res) => {
     res.status(500).json({ message: "Could not place order", error });
   }
 };
-
 // get all orders
-export const getAllOrders = async (req, res) => {
+export const getOrders = async (req, res) => {
   try {
-    // Find all orders in the database
-    const orders = await orderModel.find();
+    // Fetch orders from the database
+    const orders = await orderModel.find().exec();
 
-    res.status(200).json({ orders });
+    // If there are no orders, send an appropriate response
+    if (!orders || orders.length === 0) {
+      return res.status(404).json({ message: "No orders found" });
+    }
+
+    // If orders are found, send them in the response
+    res.status(200).json(orders);
   } catch (error) {
-    console.error("Error fetching orders:", error);
-    res.status(500).json({ message: "Could not fetch orders", error });
+    // If there's an error, send an error response
+    res
+      .status(500)
+      .json({ message: "Failed to fetch orders", error: error.message });
+  }
+};
+
+// staus order
+export const updateOrderStatusById = async (req, res) => {
+  const { orderId } = req.params;
+  const { status } = req.body;
+
+  try {
+    // Find the order by ID
+    const order = await orderModel.findById(orderId);
+
+    // If order not found, return an error response
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Update the order status
+    order.status = status;
+
+    // Save the updated order
+    await order.save();
+
+    // Send a success response
+    res
+      .status(200)
+      .json({ message: "Order status updated successfully", order });
+  } catch (error) {
+    // If there's an error, send an error response
+    console.error("Error updating order status:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to update order status", error: error.message });
   }
 };

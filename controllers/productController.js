@@ -104,6 +104,34 @@ export const getSingleProductController = async (req, res) => {
   }
 };
 
+// get prduct by id
+export const getSingleProductControllerId = async (req, res) => {
+  try {
+    const product = await productModel
+      .findById(req.params.productId) // Assuming the parameter is named "productId"
+      .select("-photo")
+      .populate("category");
+    if (!product) {
+      return res.status(404).send({
+        success: false,
+        message: "Product not found",
+      });
+    }
+    res.status(200).send({
+      success: true,
+      message: "Single Product Fetched",
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while getting single product",
+      error,
+    });
+  }
+};
+
 // top 4 latest product
 export const getLatestProductController = async (req, res) => {
   try {
